@@ -1,0 +1,20 @@
+.link-btn .theme-btn  {
+  border-radius: 8px;
+}
+body {
+  font-family: cursive !important;
+}
+.collapse{
+ position: relative;
+}
+
+.collapse::before {
+  content: ""; 
+  position: absolute; 
+  right: -40px; 
+  top: 35%; 
+  height: 30%; 
+  width: 2px; 
+  background-color: rgb(224, 217, 217); 
+  z-index: 1; /* Optional: Ensures line appears above other elements if needed */
+}
