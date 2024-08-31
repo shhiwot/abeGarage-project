@@ -4,13 +4,15 @@ import React from 'react';
 import { Routes, Route } from "react-router";
 
 import Home from "./markup/pages/Home";
+// Import the login components
+import Login from "./markup/pages/Login";
 // Import the css files 
 import "./assets/template_assets/css/bootstrap.css";
 import "./assets/template_assets/css/style.css";
 import "./assets/template_assets/css/responsive.css";
 import "./assets/template_assets/css/color.css";
 
-// // Import the custom css file
+// Import the custom css file
 import "./assets/styles/custom copy.css";
 import "./assets/styles/custom.css";
 
@@ -25,6 +27,7 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
       <Footer />
     </>
