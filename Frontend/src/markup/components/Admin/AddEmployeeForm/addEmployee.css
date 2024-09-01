@@ -1,0 +1,127 @@
+.contact-section .external_container .contact-title h2 {
+  padding:5% 8%;
+  font-size: 30px;
+}
+.validation-error{
+  color: red;
+  float: right;
+  font-style: italic;
+}
+select.custom-select-box {
+  border-right: 25px solid #dddddd;
+}
+.external-container .contact-form .theme-btn span {
+  color: #fff;
+}
+.theme-btn a {
+  color: #fff;
+}
+
+/* Additional CSS feature */
+.theme-btn.btn-style-one {
+  border-radius: 7px; /* Adjust the value to your preference */
+}
+.contact-form {
+    border-radius: 10px;
+    border: 1px solid #ddd; /* Optional: Adds a border for better visibility */
+    padding: 20px; /* Optional: Adds some padding inside the form */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Adds a subtle shadow */
+}
+.form-group input[type="email"],
+.form-group input[type="text"],
+.form-group input[type="password"],
+.form-group select.custom-select-box {
+    border-radius: 5px;
+    border: 1px solid #ccc; /* Optional: Adds a subtle border */
+    padding: 10px; /* Adds some padding for a better appearance */
+    width: 100%; /* Ensures the input fields and select box take full width */
+    box-sizing: border-box; /* Ensures padding does not affect width */
+    margin-bottom: 15px; /* Adds spacing between form fields */
+    font-size: 16px; /* Adjusts the font size for better readability */
+}
+.form-group input[type="email"]:focus,
+.form-group input[type="text"]:focus,
+.form-group input[type="password"]:focus,
+.form-group select.custom-select-box:focus {
+    border-color: #4CAF50; /* Changes border color on focus for better UX */
+    outline: none; /* Removes the default outline on focus */
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5); /* Adds a soft shadow on focus */
+}
+/* CSS to hide password */
+.password-container {
+  position: relative;
+  width: 100%;
+}
+.password-input {
+  width: 100%;
+  padding: 10px 40px 10px 10px; /* Adjust padding for icon space */
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+.password-toggle-icon {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #777;
+  font-size: 20px;
+}
+.password-toggle-icon:hover {
+  color: #4CAF50; /* Color on hover */
+}
+.password-input:focus {
+  border-color: #4CAF50;
+  outline: none;
+  box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+}
+
+/* Another */
+/* Admin pages */
+.admin-left-side {
+  background-color:#222b48;
+}
+.admin-right-side {
+  background: rgb(246 247 250);
+  border-bottom: 1px solid #dfe2ec;
+}
+.admin-menu {
+  background: #1e2331;
+  padding: 10px 20px;
+}
+.admin-left-side .list-group-item.active {
+  z-index: 2;
+  color: #fff;
+  background-color: #3c404c;
+  border-color: #3c404c;
+  border-bottom: 1px solid #616675;
+}
+.admin-menu h2 {
+  font-size: 21px;
+  font-weight: 300;
+  line-height: 50px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgb(249, 249, 249);
+  display: block;
+  text-decoration: none;
+}
+.admin-left-side.col-md-3 {
+  padding: 0;
+}
+.admin-left-side .list-group-item {
+  background-color: #222b48;
+  border-bottom: 1px solid #616675;
+  margin-bottom: 0px;
+  color: #fff;
+}
+.admin-left-side a {
+  /* color: #a2a5ad; */
+  color: #fff;
+}
+.admin-left-side a:hover {
+  color: #fff;
+}
+

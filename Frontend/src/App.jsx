@@ -6,6 +6,12 @@ import { Routes, Route } from "react-router";
 import Home from "./markup/pages/Home";
 // Import the login components
 import Login from "./markup/pages/Login";
+// My task Start ******************
+import AddEmployee from "./markup/pages/admin/AddEmployee.jsx";
+// Import the PrivateAuthRoute component 
+import PrivateAuthRoute from './markup/components/Auth/PrivateAuthRoute.jsx';
+import Unauthorized from "./markup/pages/Unauthorized.jsx";
+// My task End ******************
 // Import the css files 
 import "./assets/template_assets/css/bootstrap.css";
 import "./assets/template_assets/css/style.css";
@@ -28,6 +34,15 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/unauthorized" element={<Unauthorized />} />
+        <Route
+          path="/admin/add-employee"
+          element={
+            <PrivateAuthRoute roles={[3]}>
+              <AddEmployee />
+            </PrivateAuthRoute>
+          }
+        />
       </Routes>
       <Footer />
     </>
