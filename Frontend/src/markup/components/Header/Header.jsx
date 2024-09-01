@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 import logo from "../../../assets/images/logo11.png";
 import { logOut } from "../../../services/login.service";
 import { useAuth } from "../../../Contexts/AuthContext.jsx";
+// My Additional
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./Header.css";
 
 function Header(props) {
   // Call the useAuth hook to access the context values
@@ -33,12 +36,15 @@ function Header(props) {
                 {isLogged ? (
                   <div className="link-btn">
                     <div className="phone-number">
-                      <strong>Welcome {employee?.employee_first_name}</strong>
+                      <strong className="mr-4">
+                        Welcome {employee?.employee_first_name}
+                      </strong>
                     </div>
                   </div>
                 ) : (
                   <div className="phone-number">
-                    Schedule Appointment: <strong>1800 456 7890 </strong>
+                    Schedule Appointment:{" "}
+                    <strong className="mr-4">1800 456 7890 </strong>
                   </div>
                 )}
               </div>
@@ -77,6 +83,9 @@ function Header(props) {
                         </li>
                         <li>
                           <a href="/contact">Contact Us</a>
+                        </li>
+                        <li>
+                          <a href="/admin">Admin</a>
                         </li>
                       </ul>
                     </div>

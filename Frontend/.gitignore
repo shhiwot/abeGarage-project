@@ -1,5 +1,6 @@
 # Logs
 .env
+node_modules/
 package-lock.json
 logs
 *.log
@@ -26,4 +27,3 @@ dist-ssr
 *.sw?
 
 .vite
-package-lock.json
