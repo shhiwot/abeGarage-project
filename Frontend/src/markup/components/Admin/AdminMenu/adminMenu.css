@@ -12,7 +12,10 @@
   display: block;
   text-decoration: none;
 }
-
+.list-group{
+  width: 95%;
+  margin-top: 10%;
+}
 .admin-left-side .list-group-item.active {
   z-index: 2;
   color: #fff;
