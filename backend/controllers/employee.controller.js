@@ -1,5 +1,4 @@
 // Import the employee service 
-const employeeService = require('../services/employee.service');
 
 //update employee
 

@@ -1,8 +1,4 @@
 // Import the query function from the db.config.js file 
-const conn = require("../config/db.config");
-// Import the bcrypt module 
-const bcrypt = require('bcrypt');
-
 
 
 // A function to update an existing employee
