@@ -44,6 +44,7 @@ CREATE TABLE IF NOT EXISTS `company_roles` (
 
 CREATE TABLE IF NOT EXISTS `common_services` (
   `service_id` int(11) NOT NULL AUTO_INCREMENT,
+   `id` VARCHAR(50) NOT NULL,
   `service_name` varchar(255) NOT NULL,
   `service_description` TEXT,
   PRIMARY KEY (service_id)
@@ -52,17 +53,18 @@ CREATE TABLE IF NOT EXISTS `common_services` (
 
 -- Employee tables 
 CREATE TABLE IF NOT EXISTS `employee` (
-  `employee_id` int(11) NOT NULL AUTO_INCREMENT,
-  `employee_email` varchar(255) NOT NULL,
-  `active_employee` int(11) NOT NULL,
+  `employee_id` VARCHAR(50) NOT NULL,
+  `employee_email` VARCHAR(255) NOT NULL,
+  `active_employee` INT(11) NOT NULL,
   `added_date` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (employee_id), 
-  UNIQUE (employee_email)
+  PRIMARY KEY (`employee_id`),
+  UNIQUE (`employee_email`)
 ) ENGINE=InnoDB;
+
 
 CREATE TABLE IF NOT EXISTS `employee_info` (
   `employee_info_id` int(11) NOT NULL AUTO_INCREMENT,
-  `employee_id` int(11) NOT NULL,
+  `employee_id` VARCHAR(50) NOT NULL,
   `employee_first_name` varchar(255) NOT NULL,
   `employee_last_name` varchar(255) NOT NULL,
   `employee_phone` varchar(255) NOT NULL,
@@ -72,7 +74,7 @@ CREATE TABLE IF NOT EXISTS `employee_info` (
 
 CREATE TABLE IF NOT EXISTS `employee_pass` (
   `employee_pass_id` int(11) NOT NULL AUTO_INCREMENT,
-  `employee_id` int(11) NOT NULL,
+   `employee_id` VARCHAR(50) NOT NULL,
   `employee_password_hashed` varchar(255) NOT NULL,
   PRIMARY KEY (employee_pass_id),
   FOREIGN KEY (employee_id) REFERENCES employee(employee_id)
@@ -80,7 +82,7 @@ CREATE TABLE IF NOT EXISTS `employee_pass` (
 
 CREATE TABLE IF NOT EXISTS `employee_role` (
   `employee_role_id` int(11) NOT NULL AUTO_INCREMENT,
-  `employee_id` int(11) NOT NULL,
+  `employee_id` VARCHAR(50) NOT NULL,
   `company_role_id` int(11) NOT NULL,
   PRIMARY KEY (employee_role_id),
   FOREIGN KEY (employee_id) REFERENCES employee(employee_id),
@@ -90,7 +92,7 @@ CREATE TABLE IF NOT EXISTS `employee_role` (
 -- Order tables  
 CREATE TABLE IF NOT EXISTS `orders` (
   `order_id` int(11) NOT NULL AUTO_INCREMENT,
-  `employee_id` int(11) NOT NULL,
+  `employee_id` VARCHAR(50) NOT NULL,
   `customer_id` int(11) NOT NULL,
   `vehicle_id` int(11) NOT NULL,
   `order_date` DATETIME DEFAULT CURRENT_TIMESTAMP,
@@ -134,20 +136,22 @@ CREATE TABLE IF NOT EXISTS `order_status` (
   FOREIGN KEY (order_id) REFERENCES orders(order_id)
 ) ENGINE=InnoDB;
 
--- Add the roles to the database 
+-- -- Add the roles to the database 
 INSERT INTO company_roles (company_role_name)
 VALUES ('Employee'), ('Manager'), ('Admin');
 
--- This is the admin account 
-INSERT INTO employee (employee_email, active_employee, added_date)
-VALUES ('admin@admin.com', 1, CURRENT_TIMESTAMP);
+-- Generate a unique employee ID, e.g., 'EMP001'
+INSERT INTO employee (employee_id, employee_email, active_employee, added_date)
+VALUES ('7A2D797B-F4B7-4D88-8F24-33EED97F8DB9', 'admin@admin.com', 1, CURRENT_TIMESTAMP);
 
+-- Insert employee_info with the same employee_id
 INSERT INTO employee_info (employee_id, employee_first_name, employee_last_name, employee_phone)
-VALUES (1, 'Admin', 'Admin', 555-555-5555); 
+VALUES ('7A2D797B-F4B7-4D88-8F24-33EED97F8DB9', 'Admin', 'Admin', '555-555-5555');
 
 -- Password is 123456
 INSERT INTO employee_pass (employee_id, employee_password_hashed)
-VALUES (1, '$2b$10$B6yvl4hECXploM.fCDbXz.brkhmgqNlawh9ZwbfkFX.F3xrs.15Xi');  
+VALUES ('7A2D797B-F4B7-4D88-8F24-33EED97F8DB9', '$2b$10$OGVu0T28NsyYI96geOGcQ.C9NA8HfHKKkyKy5mqPHthjtnhhD7Ao.');
 
+-- Assign a role to the employee
 INSERT INTO employee_role (employee_id, company_role_id)
-VALUES (1, 3); 
+VALUES ('7A2D797B-F4B7-4D88-8F24-33EED97F8DB9', 3);

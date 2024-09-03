@@ -22,9 +22,21 @@ app.use(cors());
 app.use(express.json());
 // Add the sanitizer to the express middleware
 app.use(sanitize.middleware);
+
 // Add the routes to the application as middleware
 app.use(router);
 // Start the webserver
 app.listen(port, () => {
   console.log(`Server running on port: ${port}`);
 });
+
+//generate a random string for hashed password 
+// const bcrypt = require("bcrypt");
+
+// const password = "123456";
+// const saltRounds = 10;
+
+// bcrypt.hash(password, saltRounds, function (err, hash) {
+//   if (err) throw err;
+//   console.log("Hashed Password:", hash);
+// });
