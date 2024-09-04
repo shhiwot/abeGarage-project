@@ -13,7 +13,11 @@ router.post("/api/employee", [authMiddleware.verifyToken, authMiddleware.isAdmin
 router.get("/api/employees", [authMiddleware.verifyToken, authMiddleware.isAdmin], employeeController.getAllEmployees);
 // Export the router
 //create a route to handle get an employee 
-
+router.put(
+  "/employee/:employee_id",
+  [authMiddleware.verifyToken, authMiddleware.isAdmin],
+  employeeController.updateEmployee
+);
 router.delete(
   "/employee/:employee_id",
   [authMiddleware.verifyToken, authMiddleware.isAdmin],
