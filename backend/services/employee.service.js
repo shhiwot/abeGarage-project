@@ -78,7 +78,38 @@ async function getAllEmployees() {
   const query =
     "SELECT * FROM employee INNER JOIN employee_info ON employee.employee_id = employee_info.employee_id INNER JOIN employee_role ON employee.employee_id = employee_role.employee_id INNER JOIN company_roles ON employee_role.company_role_id = company_roles.company_role_id ORDER BY employee.employee_id DESC limit 10";
   const rows = await conn.query(query);
-  return rows;
+  return rows;}
+
+
+
+
+
+async function deleteEmployee(id) {
+  try {
+    // Check if employee exists by ID
+    const [employee] = await conn.query(
+      "SELECT employee_email FROM employee WHERE employee_id = ?",
+      [id]
+    );
+
+    if (employee.length === 0) {
+      return { status: 404, message: "Employee not found" };
+    }
+
+    // Delete employee from related tables
+    await conn.query("DELETE FROM employee_role WHERE employee_id = ?", [id]);
+
+    await conn.query("DELETE FROM employee_pass WHERE employee_id = ?", [id]);
+
+    await conn.query("DELETE FROM employee_info WHERE employee_id = ?", [id]);
+
+    await conn.query("DELETE FROM employee WHERE employee_id = ?", [id]);
+
+    return { status: 200, message: "Employee deleted successfully" };
+  } catch (error) {
+    console.error("Error in deleteEmployee service:", error);
+    return { status: 500, message: "Internal server error" };
+  }
 }
 
 // Export the functions for use in the controller
@@ -87,4 +118,7 @@ module.exports = {
   createEmployee,
   getEmployeeByEmail,
   getAllEmployees,
+  deleteEmployee,
 };
+
+

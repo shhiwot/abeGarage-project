@@ -1,3 +1,4 @@
+
 // Import the express module  
 const express = require('express');
 // Call the router method from express to create the router 
@@ -11,4 +12,12 @@ router.post("/api/employee", [authMiddleware.verifyToken, authMiddleware.isAdmin
 // Create a route to handle the get all employees request on get
 router.get("/api/employees", [authMiddleware.verifyToken, authMiddleware.isAdmin], employeeController.getAllEmployees);
 // Export the router
+//create a route to handle get an employee 
+
+router.delete(
+  "/employee/:employee_id",
+  [authMiddleware.verifyToken, authMiddleware.isAdmin],
+  employeeController.deleteEmployee
+);
+
 module.exports = router;

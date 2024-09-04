@@ -10,11 +10,15 @@
     text-align: left;
     padding: 8px;
 }
-
+.contact-section {
+    padding: 0px 0px 70px !important;
+}
 .customTable th {
     background-color: white
 }
-
+.contact-section .contact-title {
+    margin-bottom: -38px !important;
+}
 .customTable tr:nth-child(even) {
     background-color:white;
 }
