@@ -54,7 +54,22 @@ async function getAllEmployees(req, res, next) {
       data: employees,
     })}};
 
+async function updateEmployee(req, res) {
+ const id = req.params.employee_id;
+  const employeeData = req.body;
+  console.log(employeeData);
+  
 
+  try {
+  const result = await employeeService.updateEmployee(id, employeeData);
+    res.status(result.status).json({ message: result.message });
+  } catch (err) {
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+}
+
+
+// Export the createEmployee controller 
 
 //Delete Employee
 async function deleteEmployee(req, res) {
@@ -72,5 +87,6 @@ async function deleteEmployee(req, res) {
 module.exports = {
   createEmployee,
   getAllEmployees,
+  updateEmployee,
   deleteEmployee
 }
