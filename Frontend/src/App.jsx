@@ -29,6 +29,7 @@ import Footer from './markup/components/Footer/Footer';
 import AdminDashboard from './markup/pages/admin/AdminDashboard.jsx';
 import Employees from './markup/pages/admin/Employees.jsx';
 
+
 function App() {
   return (
     <>
@@ -51,6 +52,16 @@ function App() {
           element={
             <PrivateAuthRoute roles={[3]}>
               <AddEmployee />
+            </PrivateAuthRoute>
+          }
+        />
+
+        {/* // Add the Employees Route  */}
+        <Route
+          path="/admin/employees"
+          element={
+            <PrivateAuthRoute roles={[2, 3]}>
+              <Employees />
             </PrivateAuthRoute>
           }
         />

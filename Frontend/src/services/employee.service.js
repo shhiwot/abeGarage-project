@@ -53,6 +53,7 @@ const getAllEmployees = async (token) => {
   }
 };
 
+
 // Export all the functions
 const employeeService = {
   createEmployee,

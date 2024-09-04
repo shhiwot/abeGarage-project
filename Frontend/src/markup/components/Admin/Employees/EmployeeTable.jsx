@@ -1,37 +1,3 @@
-// import React from "react";
-// import styles from "./Table.module.css"; // Importing CSS module
-
-// const Table = () => {
-//   return (
-//     <table className={styles.customTable}>
-//       <thead>
-//         <tr>
-//           <th>Active</th>
-//           <th>First Name</th>
-//           <th>Last Name</th>
-//           <th>Email</th>
-//           <th>phone</th>
-//           <th>Added Date</th>
-//           <th>Role</th>
-//           <th>Edit/Delete</th>
-//         </tr>
-//       </thead>
-//       <tbody>
-//         {Array.from({ length: 5 }, (_, rowIndex) => (
-//           <tr key={rowIndex}>
-//             {Array.from({ length: 8 }, (_, colIndex) => (
-//               <td key={colIndex}>
-//                 Row {rowIndex + 1}, Col {colIndex + 1}
-//               </td>
-//             ))}
-//           </tr>
-//         ))}
-//       </tbody>
-//     </table>
-//   );
-// };
-
-// export default Table;
 
 
 // Table.jsx
@@ -84,6 +50,7 @@ const navigate=useNavigate()
     console.log("Edit employee with ID:", employeeId);
     // Navigate to the edit page with the employee ID
     navigate(`/admin/employee/edit/${employeeId}`);
+    
   };
 
   const handleDelete = (employeeId) => {
@@ -100,8 +67,8 @@ const navigate=useNavigate()
   }
 
   return (
-    <section className="contact-section">
-      <div className="contact-title">
+    <section className="contact-section" style={{ paddingTop: "0" }}>
+      <div className="contact-title" style={{ marginBottom: "50" }}>
         <h2>employees</h2>
       </div>
       <table className={styles.customTable}>

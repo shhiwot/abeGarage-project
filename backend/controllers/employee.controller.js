@@ -1,3 +1,4 @@
+
 // Import the employee service
 const employeeService = require("../services/employee.service");
 // Create the add employee controller
@@ -51,7 +52,19 @@ async function getAllEmployees(req, res, next) {
     res.status(200).json({
       status: "success",
       data: employees,
-    });
+    })}};
+
+
+
+//Delete Employee
+async function deleteEmployee(req, res) {
+  const id = req.params.employee_id;
+
+  try {
+    const result = await employeeService.deleteEmployee(id);
+    res.status(500).json({ message: result.message });
+  } catch (error) {
+    res.status(500).json({ message: "Internal Server Error" });
   }
 }
 
@@ -59,4 +72,5 @@ async function getAllEmployees(req, res, next) {
 module.exports = {
   createEmployee,
   getAllEmployees,
-};
+  deleteEmployee
+}
