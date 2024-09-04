@@ -1,0 +1,55 @@
+.admin-menu {
+  background: #1e2331;
+  padding: 10px 20px;
+}
+.admin-menu h2 {
+  font-size: 21px;
+  font-weight: 300;
+  line-height: 50px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgb(249, 249, 249);
+  display: block;
+  text-decoration: none;
+}
+.list-group{
+  width: 95%;
+  margin-top: 10%;
+}
+.admin-left-side .list-group-item.active {
+  z-index: 2;
+  color: #fff;
+  background-color: #3c404c;
+  border-color: #3c404c;
+  border-bottom: 1px solid #616675;
+}
+
+.admin-left-side .list-group-item {
+  background-color: #222b48;
+  border-bottom: 1px solid #616675;
+  margin-bottom: 0px;
+  color: #fff;
+}
+
+.admin-left-side a {
+  color: #a2a5ad;
+  border-bottom: 1px solid #616675;
+}
+.admin-left-side a:hover {
+  color: #fff;
+}
+.validation-error {
+  color: red;
+  float: right;
+  font-style: italic;
+}
+
+/* My trying */
+.anchor-link a {
+  display: block;
+  padding: 8px 3px;
+  text-decoration: none;
+  color: inherit;
+  border-bottom: 1px solid #ddd;
+}
+
