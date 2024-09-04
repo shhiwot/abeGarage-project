@@ -7,6 +7,7 @@
   width: 100%; /* Set the width as needed */
   height: 70vw; /* Set the height as needed */
 }
+
 /* //banner 2 */
 .another-section .sec-bg {
   background-image: url("../images/banner/banner.jpg");
@@ -29,7 +30,7 @@
   left: 3px; /* Moves the div to the right from its normal position */
 }
 .image4 {
-  background-image: url("../images/banner/carImg4.png");
+  background-image: url("");
   background-size: cover; /* Adjusts the image to cover the entire element */
   background-position: 100% center; /* Centers the image within the element */
   background-repeat: no-repeat; /* Prevents the image from repeating */
@@ -132,3 +133,40 @@ step {
   top:50px;
   left:15px;
 }
+/* contact us */
+
+ .sec-bg1{
+   background-image: url("../images/banner/contactus6.jpeg");
+  background-size: cover; /* Adjusts the image to cover the entire element */
+  background-position:center ; /* Centers the image within the element */
+  background-repeat: no-repeat; /* Prevents the image from repeating */
+  width: 100%; /* Set the width as needed */
+  height: 20vw; /* Set the height as needed */
+}
+ .work-img .contact{
+  width: 500px;
+  height: 450px;
+ border: 0;
+ background-position: center;
+ }
+ .sec-title .style-two h1 h2 p{
+  margin-left: 20px;
+ } 
+.Email{
+display: flex;
+align-items: center;
+color: red;
+
+}
+.Address{
+display: flex;
+align-items: center;
+color: red;
+}
+.phone{
+  display: flex;
+align-items: center;
+color: red;
+}
+
+

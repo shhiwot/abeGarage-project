@@ -4,6 +4,9 @@ import React from 'react';
 import { Routes, Route } from "react-router";
 
 import Home from "./markup/pages/Home";
+// Import the contactus components
+ 
+import Contact from "./markup/pages/Contact";
 // Import the login components
 import Login from "./markup/pages/Login";
 // My task Start ******************
@@ -36,6 +39,7 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/Contact" element={<Contact />} />
         <Route path="/login" element={<Login />} />
         <Route path="/unauthorized" element={<Unauthorized />} />
         {/* add admin dashboard Route  */}
