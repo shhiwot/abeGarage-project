@@ -5,10 +5,10 @@ import vban1 from "../../assets/images/custom/misc/vban1.jpg";
 import vban2 from "../../assets/images/custom/misc/vban2.jpg";
 // import image3 from "../../assets/images/banner/car wheeljpg.png";
 // import image4 from "../../assets/images/resource/image-4.jpg";
-
+import "./home.css"
 function Home() {
   return (
-    <>
+    <div className="homeWrapper">
       <section className="video-section">
         <div data-parallax='{"y": 50}' className="sec-bg"></div>
         <div className="auto-container">
@@ -310,7 +310,7 @@ function Home() {
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 }
 
