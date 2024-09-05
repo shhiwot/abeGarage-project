@@ -1,0 +1,28 @@
+.main-banner {
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 100px 20px;
+    text-align: center;
+    position: relative;
+  }
+  
+  .banner-content {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .breadcrumb {
+    margin-top: 20px;
+    font-size: 14px;
+  }
+  
+  .breadcrumb a {
+    color: white;
+    text-decoration: none;
+  }
+  
+  .breadcrumb a:hover {
+    text-decoration: underline;
+  }
+  

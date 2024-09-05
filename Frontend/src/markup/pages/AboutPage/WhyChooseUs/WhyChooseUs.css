@@ -1,0 +1,134 @@
+/* .why-choose-us {
+    padding: 50px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  .why-choose-us h2 {
+    font-size: 36px;
+    color: #2c3e50;
+    margin-bottom: 30px;
+  }
+  
+  .benefits-list {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+  
+  .benefits-list li {
+    width: 200px;
+    margin: 20px;
+    text-align: center;
+  }
+  
+  .benefits-list img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 10px;
+  }
+  
+  .benefits-list p {
+    font-size: 16px;
+    color: #7f8c8d;
+  }
+   */
+
+   /* .why-choose-us {
+    padding: 20px;
+    background-color: #f9f9f9;
+  }
+  
+  .why-choose-us h2 {
+    font-size: 2rem;
+    color: #002366;
+    margin-bottom: 10px;
+  }
+  
+  .why-choose-us p {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 20px;
+  }
+  
+  .benefits-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .benefits-list li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  
+  .benefits-list .icon {
+    font-size: 2rem;
+    color: red;
+    margin-right: 10px;
+  }
+  
+  .benefits-list p {
+    margin: 0;
+    font-size: 1.2rem;
+    color: #333;
+  } */
+  
+  .why-choose-us {
+    padding: 20px;
+    background-color: #f9f9f9;
+  }
+  
+  .why-choose-us h2 {
+    font-size: 2rem;
+    color: #002366;
+    margin-bottom: 10px;
+  }
+  
+  .why-choose-us p {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 20px;
+  }
+  
+  .benefits-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .benefits-list li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  
+  .benefits-list .icon {
+    font-size: 2rem;
+    color: red;
+    margin-right: 10px;
+  }
+  
+  .benefits-list p {
+    margin: 0;
+    font-size: 1.2rem;
+    color: #333;
+  }
+  .why-choose-us h2 {
+    font-size: 2rem;
+    color: #002366;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .why-choose-us h2::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 3px;
+    background-color: red;
+    margin-left: 0.5cm; /* Space between the title and red line */
+  }
+  
+  
