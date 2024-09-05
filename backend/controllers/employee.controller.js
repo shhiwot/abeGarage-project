@@ -54,6 +54,28 @@ async function getAllEmployees(req, res, next) {
       data: employees,
     })}};
 
+
+
+
+async function getEmployeeByIdController(req, res, next) {
+  const id = req.params.employee_id;
+  console.log(id);
+
+  try {
+    const result = await employeeService.getEmployeeFromDb(id); // Call the DB function
+
+    if (result.status === 404) {
+      return res.status(404).json({ message: result.message });
+    }
+
+    res.status(200).json({ data: result.data });
+  } catch (err) {
+    console.error("Error fetching employee:", err);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+}
+
+
 async function updateEmployee(req, res) {
  const id = req.params.employee_id;
   const employeeData = req.body;
@@ -62,7 +84,9 @@ async function updateEmployee(req, res) {
 
   try {
   const result = await employeeService.updateEmployee(id, employeeData);
-    res.status(result.status).json({ message: result.message });
+    res
+      .status(result.status)
+      .json({ status: result.status, message: result.message });
   } catch (err) {
     res.status(500).json({ message: "Internal Server Error" });
   }
@@ -77,7 +101,9 @@ async function deleteEmployee(req, res) {
 
   try {
     const result = await employeeService.deleteEmployee(id);
-    res.status(500).json({ message: result.message });
+    res
+      .status(result.status)
+      .json({ status: result.status, message: result.message });
   } catch (error) {
     res.status(500).json({ message: "Internal Server Error" });
   }
@@ -87,6 +113,7 @@ async function deleteEmployee(req, res) {
 module.exports = {
   createEmployee,
   getAllEmployees,
+  getEmployeeByIdController,
   updateEmployee,
-  deleteEmployee
-}
+  deleteEmployee,
+};
