@@ -1,0 +1,51 @@
+.experience {
+    padding: 50px 20px;
+    background-color: #f4f4f4;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+    /* height: 100%; */
+  }
+  
+  .experience-images {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .experience-images img {
+    width: 30%;
+    border-radius: 10px;
+  }
+  
+  .experience-text {
+    flex: 1;
+    padding: 0 20px;
+  }
+  
+  .experience-text h2 {
+    font-size: 36px;
+    color: #2c3e50;
+    margin-bottom: 20px;
+  }
+  
+  .experience-text p {
+    font-size: 16px;
+    color: #7f8c8d;
+    margin-bottom: 20px;
+  }
+  
+  .about-button {
+    background-color: #e74c3c;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .about-button:hover {
+    background-color: #c0392b;
+  }
+  
