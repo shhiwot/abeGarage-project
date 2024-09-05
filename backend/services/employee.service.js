@@ -80,7 +80,107 @@ async function getAllEmployees() {
   const rows = await conn.query(query);
   return rows;}
 
+async function getEmployeeFromDb(id) {
+  try {
+    console.log(`Executing query with ID: ${id}`);
 
+    const rows = await conn.query(
+      `
+      SELECT 
+        e.employee_id,
+        e.employee_email,
+        e.active_employee,
+        e.added_date,
+        ei.employee_first_name,
+        ei.employee_last_name,
+        ei.employee_phone,
+        er.company_role_id,
+        cr.company_role_name
+      FROM employee e
+      LEFT JOIN employee_info ei ON e.employee_id = ei.employee_id
+      LEFT JOIN employee_role er ON e.employee_id = er.employee_id
+      LEFT JOIN company_roles cr ON er.company_role_id = cr.company_role_id
+      WHERE e.employee_id = ?
+    `,
+      [id]
+    );
+
+    console.log(`Query result: ${JSON.stringify(rows)}`);
+
+    // if (!Array.isArray(rows) || rows.length === 0) {
+    //   return { status: 404, message: "Employee not found" };
+    // }
+
+    // const employeeData = rows[0];
+    // console.log(`Employee data: ${JSON.stringify(employeeData)}`);
+
+    return { status: 200, data:rows };
+  } catch (error) {
+    console.error("Error fetching employee:", error);
+    return { status: 500, message: "Internal server error" };
+  }
+}
+
+// A function to update an existing employee
+async function updateEmployee(id, employeeData) {
+  const {
+    employee_first_name,
+    employee_last_name,
+    employee_phone,
+    employee_email,
+    employee_password, // Ensure this matches the name in request body
+    active_employee,
+    company_role_id,
+  } = employeeData;
+
+  try {
+    // Check if employee exists by ID
+    const [employee] = await conn.query(
+      "SELECT employee_email FROM employee WHERE employee_id = ?",
+      [id]
+    );
+    console.log(employee.employee_email);
+    if (employee.employee_email !== employee_email) {
+      return { status: 404, message: "Employee not found" };
+    }
+
+    // Encrypt password if provided
+    let hashedPassword = null;
+    if (employee_password) {
+      hashedPassword = await bcrypt.hash(employee_password, 10);
+    }
+
+    // Update employee details
+    await conn.query(
+      "UPDATE employee SET active_employee = ? WHERE employee_id = ?",
+      [active_employee, id]
+    );
+
+    await conn.query(
+      "UPDATE employee_info SET employee_first_name = ?, employee_last_name = ?, employee_phone = ? WHERE employee_id = ?",
+      [employee_first_name, employee_last_name, employee_phone, id]
+    );
+
+    if (hashedPassword) {
+      await conn.query(
+        "UPDATE employee_pass SET employee_password_hashed = ? WHERE employee_id = ?",
+        [hashedPassword, id]
+      );
+    }
+
+    if (company_role_id) {
+      await conn.query(
+        "UPDATE employee_role SET company_role_id = ? WHERE employee_id = ?",
+        [company_role_id, id]
+      );
+    }
+
+    return { status: 200, message: "Employee updated successfully" };
+  } catch (err) {
+    console.error("Error in updateEmployee service:", err);
+    throw err;
+  }
+}
 
 
 
@@ -118,6 +218,8 @@ module.exports = {
   createEmployee,
   getEmployeeByEmail,
   getAllEmployees,
+  getEmployeeFromDb,
+  updateEmployee,
   deleteEmployee,
 };
 

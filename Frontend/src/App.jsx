@@ -31,6 +31,7 @@ import Header from './markup/components/Header/Header';
 import Footer from './markup/components/Footer/Footer';
 import AdminDashboard from './markup/pages/admin/AdminDashboard.jsx';
 import Employees from './markup/pages/admin/Employees.jsx';
+import EditEmployee from './markup/pages/admin/EditEmployeePege.jsx';
 
 
 function App() {
@@ -66,6 +67,14 @@ function App() {
           element={
             <PrivateAuthRoute roles={[2, 3]}>
               <Employees />
+            </PrivateAuthRoute>
+          }
+        />
+        <Route
+          path="/admin/employee/edit/:employee_id"
+          element={
+            <PrivateAuthRoute roles={[2, 3]}>
+              <EditEmployee />
             </PrivateAuthRoute>
           }
         />
