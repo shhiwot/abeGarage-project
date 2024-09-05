@@ -31,18 +31,18 @@ app.listen(port, () => {
 });
 
 //generate a random string for hashed password
-const bcrypt = require("bcrypt");
+// const bcrypt = require("bcrypt");
 
-const password = "123456";
-const saltRounds = 10;
+// const password = "123456";
+// const saltRounds = 10;
 
-bcrypt.hash(password, saltRounds, function (err, hash) {
-  if (err) throw err;
-  console.log("Hashed Password:", hash);
-});
+// bcrypt.hash(password, saltRounds, function (err, hash) {
+//   if (err) throw err;
+//   console.log("Hashed Password:", hash);
+// });
 
-const { v4: uuidv4 } = require("uuid"); // Use uuid for unique IDs
-const employee_id = uuidv4().toUpperCase();
-console.log(employee_id);
+// const { v4: uuidv4 } = require("uuid"); // Use uuid for unique IDs
+// const employee_id = uuidv4().toUpperCase();
+// console.log(employee_id);
 
 
