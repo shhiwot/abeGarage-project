@@ -149,3 +149,58 @@ exports.deleteCustomer = async (id) => {
   }
 };
 
+const conn = require("../config/db.config"); // Assuming you have a database module
+
+// Update an existing order
+exports.updateOrder = async (orderData) => {
+  try {
+    const [result] = await conn.query(
+      `UPDATE orders 
+       SET customer_id = ?, employee_id = ?, vehicle_id = ?, service_id = ?, order_date = ?, 
+           estimated_completion_date = ?, completion_date = ?, order_description = ?, 
+           order_completed = ?, order_services = ? 
+       WHERE order_id = ?`,
+      [
+        orderData.customer_id,
+        orderData.employee_id,
+        orderData.vehicle_id,
+        orderData.service_id,
+        orderData.order_date,
+        orderData.estimated_completion_date,
+        orderData.completion_date,
+        orderData.order_description,
+        orderData.order_completed,
+        orderData.order_services,
+        orderData.order_id,
+      ]
+    );
+
+    if (result.affectedRows === 0) {
+      throw new Error('Order not found or no changes made');
+    }
+
+    return { success: true };
+  } catch (error) {
+    console.error('Error updating order:', error.message);
+    throw new Error('Error updating order');
+  }
+};
+
+// Delete an existing order
+exports.deleteOrder = async (id) => {
+  try {
+    const [result] = await conn.query(
+      'DELETE FROM orders WHERE order_id = ?',
+      [id]
+    );
+
+    if (result.affectedRows === 0) {
+      throw new Error('Order not found');
+    }
+
+    return { success: true };
+  } catch (error) {
+    console.error('Error deleting order:', error.message);
+    throw new Error('Error deleting order');
+  }
+};
