@@ -1,87 +1,84 @@
-const customerService = require('../services/customer.service');
+const customerService = require("../services/customer.service");
 
-// Add a new customer
-async function addCustomer(req, res) {
-  const {
-    customer_first_name,
-    customer_last_name,
-    customer_email,
-    customer_phone_number,
-    active_customer_status,
-    customer_hash,
-    customer_added_date,
-  } = req.body;
-
-  // Basic validation
-  if (
-    !customer_first_name ||
-    !customer_last_name ||
-    !customer_email ||
-    !customer_phone_number ||
-    active_customer_status === undefined ||
-    !customer_hash ||
-    !customer_added_date
-  ) {
-    return res.status(400).json({
-      error: 'Bad Request',
-      message: 'Please provide all required fields',
-    });
-  }
-
+async function createCustomer(req, res, next) {
   try {
-    // Call the service to add a new customer
-    await customerService.addCustomer({
-      customer_first_name,
-      customer_last_name,
-      customer_email,
-      customer_phone_number,
-      active_customer_status,
-      customer_hash,
-      customer_added_date,
-    });
+    // Call the createCustomer method from the customer service
+    const customerResponse = await customerService.createCustomer(req.body);
 
-    return res.status(201).json({
-      message: 'Customer created successfully',
-      success: 'true',
-    });
-  } catch (error) {
-    return res.status(500).json({
-      error: 'Internal Server Error',
-      message: 'An unexpected error occurred.',
-    });
-  }
-}
-
-// Get all customers
-async function getAllCustomers(req, res) {
-  try {
-    const customers = await customerService.getAllCustomers();
-    res.status(200).json({
-      limit: customers.length,
-      customers,
-    });
-  } catch (error) {
-    res.status(500).json({
-      error: "Internal Server Error",
-      message: "An unexpected error occurred.",
-    });
-  }
-}
-
-// Get customer by ID
-async function getCustomerById(req, res) {
-  const { id } = req.params;
-  try {
-    const customer = await customerService.getCustomerById(id);
-    if (customer) {
-      res.status(200).json(customer);
+    // Check if the customer was created successfully
+    if (customerResponse.status === 201) {
+      // If successful, send a response to the client
+      res.status(201).json({
+        message: customerResponse.message,
+        success: true,
+        data: customerResponse.createdCustomer,
+      });
     } else {
-      res.status(404).json({
-        error: "Not Found",
-        message: "Customer not found",
+      // If unsuccessful, send a response to the client
+      res.status(customerResponse.status).json({
+        message: customerResponse.message,
+        success: false,
+        error: customerResponse.error,
       });
     }
-  } catch (error) {
+  } catch (err) {
+    // Handle unexpected errors
+    res.status(500).json({
+      message: "Unexpected error occurred",
+      success: false,
+      error: err.message,
+    });
+  }
+}
+
+
+//create a function to handle the get all customers request on get
+async function getAllCustomers(req, res, next) {
+  try {
+    // Call the getAllCustomers method from the customer service
+    const customers = await customerService.getAllCustomers();
+
+    // Check if the customers were retrieved successfully
+    if (customers.success) {
+      // If successful, send a response to the client
+      res.status(200).json({
+        limit: customers.limit, // Assuming you want to return a limit field
+        customers: customers.data,
+      });
+    } else {
+      // If unsuccessful, send a response to the client
+      res.status(customers.status).json({
+        error: customers.error,
+        message: customers.message,
+      });
+    }
+  } catch (err) {
+    // Handle unexpected errors
+    res.status(500).json({
+      error: "Internal Server Error",
+      message: "An unexpected error occurred.",
+    });
+  }
+}
+//create a function to handle the get single customer request on get
+async function getCustomerById(req, res, next) {
+  try {
+    // Call the getCustomerById method from the customer service
+    const customer = await customerService.getCustomerById(req.params.id);
+
+    // Check if the customer was retrieved successfully
+    if (customer.success) {
+      // If successful, send a response to the client
+      res.status(customer.status).json(customer.data);
+    } else {
+      // If unsuccessful, send a response to the client
+      res.status(customer.status).json({
+        error: customer.error,
+        message: customer.message,
+      });
+    }
+  } catch (err) {
+    // Handle unexpected errors
     res.status(500).json({
       error: "Internal Server Error",
       message: "An unexpected error occurred.",
@@ -89,89 +86,68 @@ async function getCustomerById(req, res) {
   }
 }
 
-// Update an existing customer
-async function updateCustomer(req, res) {
-  const {
-    customer_id,
-    customer_first_name,
-    customer_last_name,
-    customer_phone_number,
-    active_customer_status
-  } = req.body;
-
-  // Basic validation
-  if (
-    !customer_id ||
-    !customer_first_name ||
-    !customer_last_name ||
-    !customer_phone_number ||
-    active_customer_status === undefined
-  ) {
-    return res.status(400).json({
-      error: 'Bad Request',
-      message: 'Please provide all required fields',
-    });
-  }
-
+//create a function to handle the update customer request on put
+async function updateCustomer(req, res, next) {
   try {
-    const updated = await customerService.updateCustomer({
+    console.log("Calling updateCustomer controller with:", req.body);
+
+    // Ensure req.body exists
+    if (!req.body) {
+      return res.status(400).json({ message: "Request body is missing" });
+    }
+
+    // Destructure the input
+    const {
       customer_id,
       customer_first_name,
       customer_last_name,
       customer_phone_number,
       active_customer_status,
-    });
+    } = req.body;
 
-    if (updated) {
-      return res.status(200).json({
-        message: 'Customer updated successfully',
-        success: 'true',
-      });
-    } else {
-      return res.status(404).json({
-        error: 'Not Found',
-        message: 'Customer not found',
-      });
+    if (
+      !customer_id ||
+      !customer_first_name ||
+      !customer_last_name ||
+      !customer_phone_number ||
+      active_customer_status === undefined
+    ) {
+      return res.status(400).json({ message: "Invalid input data" });
     }
+
+    // Call the service function
+    const result = await customerService.updateCustomerInDatabase(
+      customer_id,
+      customer_first_name,
+      customer_last_name,
+      customer_phone_number,
+      active_customer_status
+    );
+
+    console.log("Result of updateCustomerInDatabase:", result);
+
+    if (result.affectedRows === 0) {
+      return res.status(404).json({ message: "Customer not found" });
+    }
+
+    res.status(200).json({ message: "Customer updated successfully" });
   } catch (error) {
-    return res.status(500).json({
-      error: 'Internal Server Error',
-      message: 'An unexpected error occurred.',
-    });
+    console.error("Error in updateCustomer controller:", error);
+    res.status(500).json({ message: error.message });
   }
 }
 
-// Delete an existing customer
-async function deleteCustomer(req, res) {
-  const { id } = req.params;
 
-  try {
-    const deleted = await customerService.deleteCustomer(id);
 
-    if (deleted) {
-      return res.status(200).json({
-        message: 'Customer deleted successfully',
-        success: 'true',
-      });
-    } else {
-      return res.status(404).json({
-        error: 'Not Found',
-        message: 'Customer not found',
-      });
-    }
-  } catch (error) {
-    return res.status(500).json({
-      error: 'Internal Server Error',
-      message: 'An unexpected error occurred.',
-    });
-  }
-}
 
-// Export the customer controllers in the specified sequence
+
+//create a function to handle the delete customer request on delete
+
+//export the functions
 module.exports = {
-  addCustomer,
+  createCustomer,
   getAllCustomers,
   getCustomerById,
-  updateCustomer,
-  deleteCustomer,
+  updateCustomer
+  
 };

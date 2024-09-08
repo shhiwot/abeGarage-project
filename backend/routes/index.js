@@ -15,4 +15,10 @@ router.use(employeeRouter);
 // Add the login routes to the main router
 const loginRoutes=require("./login.routes") 
 router.use(loginRoutes);
+
+const customerRoutes=require("./customer.routes")
+router.use(customerRoutes)
+//import the order routes
+const orderRoutes=require("./order.routes")
+router.use(orderRoutes)
 module.exports = router;
