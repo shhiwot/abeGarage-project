@@ -36,12 +36,12 @@ const isAdmin = async (req, res, next) => {
   console.log(req.employee_email);
   const employee_email = req.employee_email;
   const employee = await employeeService.getEmployeeByEmail(employee_email);
-  if (employee[0].company_role_id === 3) {
+  if (employee[0].company_role_id === 3 || employee[0].company_role_id === 2) {
     next();
   } else {
     return res.status(403).send({
       status: "fail",
-      error: "Not an Admin!"
+      error: "Not an Admin!",
     });
   }
 }
