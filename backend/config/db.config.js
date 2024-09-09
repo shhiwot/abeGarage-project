@@ -14,7 +14,11 @@ async function query(sql, params) {
     .execute(sql, params);
     return rows;
 }
-
+async function getConnection() {
+  return await pool.getConnection();
+}
 module.exports = {
-    query
+    query,
+    getConnection,
+    pool
 };

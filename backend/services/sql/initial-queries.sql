@@ -36,10 +36,8 @@ CREATE TABLE IF NOT EXISTS `customer_vehicle_info` (
   `vehicle_serial` VARCHAR(255) NOT NULL,
   `vehicle_color` VARCHAR(255) NOT NULL,
   PRIMARY KEY (`vehicle_id`),
-  FOREIGN KEY (`customer_id`) REFERENCES `customer_identifier`(`customer_id`),
-  FOREIGN KEY (`id`) REFERENCES `customer_identifier`(`id`)
+  FOREIGN KEY (`customer_id`) REFERENCES `customer_identifier`(`customer_id`)
 ) ENGINE=InnoDB;
-
 -- Company tables 
 CREATE TABLE IF NOT EXISTS `company_roles` (
   `company_role_id` INT(11) NOT NULL AUTO_INCREMENT,
@@ -109,6 +107,9 @@ CREATE TABLE IF NOT EXISTS `orders` (
   FOREIGN KEY (`customer_id`) REFERENCES `customer_identifier`(`customer_id`),
   FOREIGN KEY (`vehicle_id`) REFERENCES `customer_vehicle_info`(`vehicle_id`)
 ) ENGINE=InnoDB;
+-- Add the new column to the orders table
+ALTER TABLE orders
+ADD COLUMN order_description TEXT;
 
 CREATE TABLE IF NOT EXISTS `order_info` (
   `order_info_id` INT(11) NOT NULL AUTO_INCREMENT,
