@@ -65,8 +65,26 @@ async function createCustomer(customer) {
 // A function to get all customers
 async function getAllCustomers() {
   try {
-    const query = "SELECT * FROM customer_identifier";
-    const rows = await conn.query(query);
+    const query = `
+    SELECT
+        ci.id,
+        ci.customer_id,
+        ci.customer_email,
+        ci.customer_phone_number,
+        ci.customer_hash,
+        ci.customer_added_date,
+        ci_info.customer_first_name,
+        ci_info.customer_last_name,
+        ci_info.active_customer_status
+    FROM
+        customer_identifier ci
+    JOIN
+        customer_info ci_info
+    ON
+        ci.customer_id = ci_info.customer_id
+`;
+  const rows = await conn.query(query);
+  console.log(rows); 
 
     // Format the response
     const customers = rows.map((row) => ({
@@ -100,9 +118,29 @@ async function getAllCustomers() {
 
 
 
+
 async function getCustomerById(id) {
   try {
-    const query = "SELECT * FROM customer_identifier WHERE id = ?";
+    const query = `
+    SELECT
+        ci.id,
+        ci.customer_id,
+        ci.customer_email,
+        ci.customer_phone_number,
+        ci.customer_hash,
+        ci.customer_added_date,
+        ci_info.customer_first_name,
+        ci_info.customer_last_name,
+        ci_info.active_customer_status
+    FROM
+        customer_identifier ci
+    JOIN
+        customer_info ci_info
+    ON
+        ci.customer_id = ci_info.customer_id
+    WHERE
+        ci.id = ?
+`;
     const rows = await conn.query(query, [id]);
 
     // Check if a customer was found
