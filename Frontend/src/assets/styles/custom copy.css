@@ -12,7 +12,7 @@
 .another-section .sec-bg {
   background-image: url("../images/banner/banner.jpg");
   background-size: cover; /* Adjusts the image to cover the entire element */
-  background-position:center ; /* Centers the image within the element */
+  background-position: center; /* Centers the image within the element */
   background-repeat: no-repeat; /* Prevents the image from repeating */
   width: 100%; /* Set the width as needed */
   height: 70vw; /* Set the height as needed */
@@ -50,7 +50,7 @@
 .phone {
   font-size: 24px !important;
 }
-  
+
 .line {
   height: 3px;
   width: 0%;
@@ -71,14 +71,14 @@ step {
   font-family: cursive;
   font-weight: 100;
 }
-.step:hover +.line {
+.step:hover + .line {
   width: 80%;
   background-color: rgb(218, 96, 96);
   margin: 0px;
   padding: 0px;
 }
-.box-shadow{
-  max-width:200px;
+.box-shadow {
+  max-width: 200px;
   border-radius: 8px;
   box-shadow: 4px 5px 20px rgba(20, 17, 17, 0.039);
 }
@@ -86,7 +86,7 @@ step {
 /* Login pages */
 
 .theme-btn.btn-style-one {
-  border-radius: 8px; 
+  border-radius: 8px;
 }
 .line {
   height: 3px;
@@ -99,9 +99,9 @@ step {
   top: -1px;
   box-sizing: border-box; /* Include padding and border in element's total width and height */
 }
-.form-group input:focus  + .line {
+.form-group input:focus + .line {
   width: 100%;
-  background-color:#08194A;
+  background-color: #08194a;
   margin: 0px;
   padding: 0px;
 }
@@ -121,52 +121,195 @@ step {
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.2); /* Optional: Add a shadow for better focus indication */
 }
 
-.loginBorder{
-  padding:40px;
-  background:rgba(0, 0, 0, 0.001) ;
+.loginBorder {
+  padding: 40px;
+  background: rgba(0, 0, 0, 0.001);
   border-color: black; /* Change border color to black on focus */
   outline: none; /* Remove default focus outline */
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.2); /* Optional: Add a shadow for better focus indication */
 }
-.contact-title{
+.contact-title {
   position: absolute;
-  top:50px;
-  left:15px;
+  top: 50px;
+  left: 15px;
 }
 /* contact us */
 
- .sec-bg1{
-   background-image: url("../images/banner/contactus6.jpeg");
+.sec-bg1 {
+  background-image: url("../images/banner/contactus6.jpeg");
   background-size: cover; /* Adjusts the image to cover the entire element */
-  background-position:center ; /* Centers the image within the element */
+  background-position: center; /* Centers the image within the element */
   background-repeat: no-repeat; /* Prevents the image from repeating */
   width: 100%; /* Set the width as needed */
   height: 20vw; /* Set the height as needed */
 }
- .work-img .contact{
+.work-img .contact {
   width: 500px;
   height: 450px;
- border: 0;
- background-position: center;
- }
- .sec-title .style-two h1 h2 p{
+  border: 0;
+  background-position: center;
+}
+.sec-title .style-two h1 h2 p {
   margin-left: 20px;
- } 
-.Email{
-display: flex;
-align-items: center;
-color: red;
-
 }
-.Address{
-display: flex;
-align-items: center;
-color: red;
-}
-.phone{
+.Email {
   display: flex;
-align-items: center;
-color: red;
+  align-items: center;
+  color: red;
+}
+.Address {
+  display: flex;
+  align-items: center;
+  color: red;
+}
+.phone {
+  display: flex;
+  align-items: center;
+  color: red;
 }
 
+/* Service_management */
+.main-content {
+  flex: 1;
+  background: #f5f4f7
+    url(.../../../template_assets//images//resource/pattern.png);
+  padding: 20px;
+}
+.row .services-right-side > *{
+  padding-right: calc(var(--bs-gutter-x) * 2) !important;
+  padding-left: calc(var(--bs-gutter-x) * 2) !important;
+}
+.header {
+  display: flex;
+  align-items: baseline;
+}
+.header h4 {
+  font-weight: 600;
+}
+.header-description {
+  font-size: 17px;
+  color: #797979;
+}
+.service-item h5 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 900;
+  color: #2c3e50;
+}
+.icon {
+  display: flex;
+  align-items: center;
+}
+.service-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.service-actions p {
+  font-size: 15px;
+}
+.header-line {
+  border: 0;
+  height: 2px;
+  background-color: red;
+  width: 150px;
+  margin-top: 10px;
+}
+.header2-line {
+  border: 0;
+  height: 2px;
+  background-color: red;
+  width: 50px;
+  margin-top: 10px;
+}
+.employee-table-container {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
 
+.employee-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.employee-table th,
+.employee-table td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.employee-table th {
+  background-color: #ecf0f1;
+}
+
+.icon {
+  cursor: pointer;
+  margin-right: 10px;
+  color: #2980b9;
+}
+
+.edit-icon:hover {
+  color: #27ae60;
+}
+
+.delete-icon:hover {
+  color: #c0392b;
+}
+.add-service-form {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+}
+
+.add-service-form h5 {
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.add-service-form input,
+.add-service-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.add-service-form button {
+  background-color: #e74c3c;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.add-service-form button:hover {
+  background-color: #c0392b;
+}
+
+/* services page */
+.video2-section .services-bg1 {
+  background-image: url("../images/Service_Banner1.png");
+  background-size: cover; /* Adjusts the image to cover the entire element */
+  background-position: center; /* Centers the image within the element */
+  background-repeat: no-repeat; /* Prevents the image from repeating */
+  width: 100%; /* Set the width as needed */
+  height: 20vw; /* Set the height as needed */
+}
+.video3-section .services-bg2 {
+  background-image: url("../images/Service_Banner2.png");
+  background-size: cover; /* Adjusts the image to cover the entire element */
+  background-position: center; /* Centers the image within the element */
+  background-repeat: no-repeat; /* Prevents the image from repeating */
+  width: 100%; /* Set the width as needed */
+  height: 20vw; /* Set the height as needed */
+}
+
+.services-section{
+  padding: 80px 0 80px;
+} 

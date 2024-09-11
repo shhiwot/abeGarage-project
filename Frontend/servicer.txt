@@ -1,0 +1,42 @@
+// const services = [
+//   {
+//     name: "Oil change",
+//     description:
+//       "Every 5,000 kilometers or so, you need to change the oil in your car to keep your engine in the best possible shape.",
+//   },
+//   {
+//     name: "Spark Plug replacement",
+//     description:
+//       "Spark plugs are a small part that can cause huge problems. Their job is to ignite the fuel in your engine, helping it start.",
+//   },
+//   {
+//     name: "Fuel Cap tightening",
+//     description:
+//       "Loose fuel caps are actually a main reason why the “check engine” light in a car comes on.",
+//   },
+//   {
+//     name: "Oxygen Sensor replacement",
+//     description:
+//       "Oxygen sensors measure the concentration of oxygen in the exhaust gases in order to optimize engine performance and emissions.",
+//   },
+//   {
+//     name: "Brake work",
+//     description:
+//       "We all know why brake work is important, especially because one quarter of all Canadian car accidents are caused by a failure to stop.",
+//   },
+//   {
+//     name: "Tire repairs and changes",
+//     description:
+//       "Without good, inflated tires, you lose speed, control, and fuel efficiency. Hence the need to get them patched if there’s a leak (for example, if you run over a nail), or replaced if they’re too worn.",
+//   },
+//   {
+//     name: "The Ignition System",
+//     description:
+//       "A car’s ignition system includes its battery, starter, and the ignition itself.",
+//   },
+//   {
+//     name: "Programming the camera software",
+//     description:
+//       "Without good, inflated tires, you lose speed, control, and fuel efficiency. Hence the need to get them patched if there’s a leak (for example, if you run over a nail),\nor replaced if they’re too worn.",
+//   },
+// ];
