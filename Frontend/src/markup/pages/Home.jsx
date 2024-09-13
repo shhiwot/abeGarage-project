@@ -1,10 +1,8 @@
 import React from "react";
-// import banner1 from "../../assets/images/banner/banner.jpg";
-// import bg1 from "../../assets/images/background/bg-1.jpg";
 import vban1 from "../../assets/images/custom/misc/vban1.jpg";
 import vban2 from "../../assets/images/custom/misc/vban2.jpg";
-// import image3 from "../../assets/images/banner/car wheeljpg.png";
-// import image4 from "../../assets/images/resource/image-4.jpg";
+import { Link } from "react-router-dom";
+
 import "./home.css"
 function Home() {
   return (
@@ -18,12 +16,12 @@ function Home() {
           </h2>
           <div className="video-box">
             <div className="video-btn">
-              <a
-                href="https://www.youtube.com/watch?v=nfP5N9Yc72A&amp;t=28s"
+              <Link
+                to="https://www.youtube.com/watch?v=nfP5N9Yc72A&amp;t=28s"
                 className="overlay-link lightbox-image video-fancybox ripple"
               >
                 <i className="flaticon-play"></i>
-              </a>
+              </Link>
             </div>
             <div className="text">
               Watch intro video <br /> about us
@@ -39,7 +37,10 @@ function Home() {
               <div className="image-box">
                 <img src={vban1} alt="" />
                 <img src={vban2} alt="" />
-                <div className="year-experience box-shadow" data-parallax='{"y": 30}'>
+                <div
+                  className="year-experience box-shadow"
+                  data-parallax='{"y": 30}'
+                >
                   <strong>24</strong> years <br /> Experience
                 </div>
               </div>
@@ -67,14 +68,14 @@ function Home() {
                   </p>
                 </div>
                 <div className="link-btn mt-40">
-                  <a
-                    href="/about"
+                  <Link
+                    to="/about"
                     className="theme-btn btn-style-one style-two"
                   >
                     <span>
                       About Us <i className="flaticon-right"></i>
                     </span>
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -98,9 +99,9 @@ function Home() {
               <div className="inner-box hvr-float-shadow">
                 <h5>Service and Repairs</h5>
                 <h2>Performance Upgrade</h2>
-                <a href="#" className="read-more">
+                <Link to="/services" className="read-more">
                   read more +
-                </a>
+                </Link>
                 <div className="icon">
                   <span className="flaticon-power"></span>
                 </div>
@@ -110,9 +111,9 @@ function Home() {
               <div className="inner-box hvr-float-shadow">
                 <h5>Service and Repairs</h5>
                 <h2>Transmission Services</h2>
-                <a href="#" className="read-more">
+                <Link to="/services" className="read-more">
                   read more +
-                </a>
+                </Link>
                 <div className="icon">
                   <span className="flaticon-gearbox"></span>
                 </div>
@@ -122,9 +123,9 @@ function Home() {
               <div className="inner-box hvr-float-shadow">
                 <h5>Service and Repairs</h5>
                 <h2>Break Repair & Service</h2>
-                <a href="#" className="read-more">
+                <Link to="/services" className="read-more">
                   read more +
-                </a>
+                </Link>
                 <div className="icon">
                   <span className="flaticon-brake-disc"></span>
                 </div>
@@ -134,9 +135,9 @@ function Home() {
               <div className="inner-box hvr-float-shadow">
                 <h5>Service and Repairs</h5>
                 <h2>Engine Service & Repair</h2>
-                <a href="#" className="read-more">
+                <Link to="/services" className="read-more">
                   read more +
-                </a>
+                </Link>
                 <div className="icon">
                   <span className="flaticon-car-engine"></span>
                 </div>
@@ -146,9 +147,9 @@ function Home() {
               <div className="inner-box hvr-float-shadow">
                 <h5>Service and Repairs</h5>
                 <h2>Tyre & Wheels</h2>
-                <a href="#" className="read-more">
+                <Link to="/services" className="read-more">
                   read more +
-                </a>
+                </Link>
                 <div className="icon">
                   <span className="flaticon-tire"></span>
                 </div>
@@ -158,9 +159,9 @@ function Home() {
               <div className="inner-box hvr-float-shadow">
                 <h5>Service and Repairs</h5>
                 <h2>Denting & Painting</h2>
-                <a href="#" className="read-more">
+                <Link to="/services" className="read-more">
                   read more +
-                </a>
+                </Link>
                 <div className="icon">
                   <span className="flaticon-spray-gun"></span>
                 </div>
@@ -275,12 +276,12 @@ function Home() {
           </h2>
           <div className="video-box">
             <div className="video-btn">
-              <a
-                href="https://www.youtube.com/watch?v=nfP5N9Yc72A&amp;t=28s"
+              <Link
+                to="https://www.youtube.com/watch?v=nfP5N9Yc72A&amp;t=28s"
                 className="overlay-link lightbox-image video-fancybox ripple"
               >
                 <i className="flaticon-play"></i>
-              </a>
+              </Link>
             </div>
             <div className="text">
               Watch intro video <br /> about us
@@ -301,10 +302,10 @@ function Home() {
             <div className="right-column">
               <div className="phone">1800.456.7890</div>
               <div className="btn">
-                <a href="#" className="theme-btn btn-style-one">
+                <Link to="#" className="theme-btn btn-style-one">
                   <span>Appointment</span>
                   <i className="flaticon-right"></i>
-                </a>
+                </Link>
               </div>
             </div>
           </div>

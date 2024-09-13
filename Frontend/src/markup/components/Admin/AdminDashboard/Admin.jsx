@@ -92,7 +92,7 @@ export default function Admin() {
               <div class="inner-box hvr-float-shadow">
                 <h5>OPEN FOR ADMINS</h5>
                 <h2>Services</h2>
-                <Link to="#" class="read-more">
+                <Link to="/admin/services" class="read-more">
                   LIST OF Service +
                 </Link>
                 <div class="icon">
