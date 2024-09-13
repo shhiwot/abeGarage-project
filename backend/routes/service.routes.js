@@ -10,7 +10,7 @@ const authMiddleware = require("../middlewares/auth.middleware");
 //create a route to handle the add service request on post
 router.post("/api/service",[authMiddleware.verifyToken, authMiddleware.isAdmin], serviceController.createService);
 //create a route to handle the get all services request on get
-router.get("/api/services",[authMiddleware.verifyToken, authMiddleware.isAdmin], serviceController.getAllServices);
+router.get("/api/services",[authMiddleware.verifyToken], serviceController.getAllServices);
 //create a route to handle the get single service request on get
 router.get("/api/service/:id", [authMiddleware.verifyToken, authMiddleware.isAdmin], serviceController.getServiceById);
 //create a route to handle the update service request on put

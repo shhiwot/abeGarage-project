@@ -28,7 +28,7 @@ function Services() {
       }
     };
     fetchServices(); // Call the function to fetch services
-  }, [employee]); // Empty dependency array means this runs once when the component mounts
+  }, [employee]); 
   const servicesCategory = [
     {
       title: "Performance Upgrade",
