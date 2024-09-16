@@ -36,6 +36,11 @@ import AboutusPeg from "./markup/pages/AboutPage/AboutUsPeg.jsx";
 import Services from "./markup/pages/Services.jsx";
 import Services_page from "./markup/pages/admin/Services_page.jsx";
 import EditServicepage from "./markup/pages/admin/EditServicepage.jsx";
+// About Customer Management Start
+import AddCustomer from "./markup/pages/admin/AddCustomer.jsx";
+import Customers from "./markup/pages/admin/Customers.jsx";
+import EditCustomer from "./markup/pages/admin/EditCustomer.jsx";
+// About Customer Management End
 
 function App() {
   return (
@@ -86,7 +91,7 @@ function App() {
         <Route
           path="/admin/services"
           element={
-            <PrivateAuthRoute roles={[2,3]}>
+            <PrivateAuthRoute roles={[2, 3]}>
               <Services_page />
             </PrivateAuthRoute>
           }
@@ -99,6 +104,37 @@ function App() {
             </PrivateAuthRoute>
           }
         />
+        {/* Customer Management Start */}
+        {/* add customer page route */}
+        <Route
+          path="/admin/add-customer"
+          element={
+            <PrivateAuthRoute roles={[2, 3]}>
+              <AddCustomer />
+            </PrivateAuthRoute>
+          }
+        />
+        {/* Customers List page route */}
+        <Route
+          path="/admin/customers"
+          element={
+            <PrivateAuthRoute roles={[2, 3]}>
+              <Customers />
+            </PrivateAuthRoute>
+          }
+        />
+
+        {/* Edit Customer Page Route */}
+        <Route
+          // path="/admin/customer/edit/:customer_id"
+          path="/admin/customer-update/:id"
+          element={
+            <PrivateAuthRoute roles={[2, 3]}>
+              <EditCustomer />
+            </PrivateAuthRoute>
+          }
+        />
+        {/* Customer Management End */}
       </Routes>
       <Footer />
     </>
