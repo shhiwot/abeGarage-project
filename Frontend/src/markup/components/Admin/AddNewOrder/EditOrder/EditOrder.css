@@ -1,0 +1,40 @@
+.choose-service {
+  /* Existing styles... */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adjust the values as needed */
+  border-radius: 8px; /* Optional: adds rounded corners */
+  padding: 20px; /* Optional: adds padding inside the container */
+  background-color: #fff; /* Optional: adds a background color */
+}
+.service-listwrapper {
+  margin-bottom: 5%;
+}
+
+@media (max-width: 425px) {
+  .servicelistWrapper {
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .service-listwrapper {
+    width: 100%;
+    margin-left: 0%;
+  }
+  .fa-cogs:before {
+    content: "";
+  }
+  .seviceWrapper {
+    width: 100%;
+    gap: 0%;
+  }
+  contact-form .theme-btn {
+    width: 100% !important;
+    
+   
+}
+}

@@ -9,15 +9,15 @@ async function createCustomer(customer) {
 
     // Insert into the customer_identifier table
     const query1 = `
-      INSERT INTO customer_identifier (id, customer_email, customer_phone_number, customer_hash, customer_added_date)
-      VALUES (?, ?, ?, ?, ?)
+      INSERT INTO customer_identifier (id, customer_email, customer_phone_number, customer_hash)
+      VALUES (?, ?, ?, ?)
     `;
     const result1 = await conn.query(query1, [
       id,
       customer.customer_email,
       customer.customer_phone_number,
       customer.customer_hash,
-      customer.customer_added_date,
+      
     ]);
 
     if (result1.affectedRows !== 1) {

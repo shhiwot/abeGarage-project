@@ -26,7 +26,7 @@ router.get(
 );
 //create a route to handle the update order request on put
 router.put(
-  "/api/order/",
+  "/api/order/edit/:id",
   [authMiddleware.verifyToken, authMiddleware.isAdmin],
   orderController.updateOrder
 );
@@ -36,5 +36,48 @@ router.delete(
   [authMiddleware.verifyToken, authMiddleware.isAdmin],
   orderController.deleteOrder
 );
+
+//create a route to handle the get customer info request on post
+router.post(
+  "/api/order/get-customer-info",
+  [authMiddleware.verifyToken, authMiddleware.isAdmin],
+  orderController.getCustomerInfo
+);
+
+//create a route to handle the get vehicle info request on post 
+router.post(
+  "/api/order/get-vehicle-info",
+  [authMiddleware.verifyToken, authMiddleware.isAdmin],
+  orderController.getVehicleInfo
+);  
+
+//create a route to handle the get empolyee info request on post
+router.post(
+  "/api/order/get-empolyee-info",
+  [authMiddleware.verifyToken, authMiddleware.isAdmin],
+  orderController.getEmployeeInfo
+);
+//create a route to handle the get service info request based on order on post
+router.post(
+  "/api/order/get-service-info/:id",
+  [authMiddleware.verifyToken, authMiddleware.isAdmin],
+  orderController.getServiceInfo
+);
+//create a route to handle the get coustomer info and vechel info based on order on get 
+router.get(
+  "/api/order/get-customer-and-vehicle-info/:id",
+  [authMiddleware.verifyToken, authMiddleware.isAdmin],
+  orderController.getCustomerAndVehicleInfo
+);
+
+
+// create route to handle all orders per coustmer 
+router.get(
+  "/api/order/:customer_id/orders",
+  [authMiddleware.verifyToken, authMiddleware.isAdmin],
+  orderController.getOrdersByCustomerId
+);
+
+
 //export the router
 module.exports = router;

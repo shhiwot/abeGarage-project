@@ -36,11 +36,9 @@ const Table = () => {
           const resultCustomer = await customerService?.getAllCustomers(
             employee.employee_token
           );
-          if (resultCustomer?.status === "success") {
+          if (resultCustomer) {
             setCustomers(resultCustomer.customers || []); // Ensure we are setting an array
-          } else {
-            throw new Error("Failed to fetch customers");
-          }
+          } 
         }
       } catch (error) {
         setError(error.message);

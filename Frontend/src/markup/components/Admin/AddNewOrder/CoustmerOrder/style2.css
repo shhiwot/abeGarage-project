@@ -1,0 +1,72 @@
+/* Styles for service-listwrapper */
+.service-listwrapper {
+  width: 86%;
+  margin-left: 7%;
+  padding: 20px;
+  background-color: #f9f9f9; /* Adjust as needed */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px; /* Adds rounded corners */
+}
+
+/* Styles for each servicelistWrapper */
+.servicelistWrapper {
+  margin-bottom: 20px;
+  padding: 15px;
+  background-color: #fff; /* Adjust as needed */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 4px; /* Adds rounded corners */
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* Align items vertically center */
+}
+ .seviceWrapper h6{
+  font-size: 18px;
+  color: #08194A;
+  font-weight: bold;
+ }
+/* Style for 'In Progress' text */
+.servicelistWrapper .status {
+    color: #333;
+    font-weight: bold;
+    text-align: center;
+    width: 100px;}
+
+/* Styles for the serviceWrapper with an icon */
+.seviceWrapper {
+  display: flex;
+  align-items: center;
+gap: 2%;
+}
+
+.seviceWrapper .icon {
+  font-size: 1.5rem; /* Adjust icon size */
+  color: #007bff; /* Adjust icon color */
+  margin-right: 10px; /* Space between icon and text */
+}
+
+.serviceWrapper h6 {
+  font-weight: bold;
+}
+
+.statusInProgress{
+  border-radius: 14px;
+   border: 1px solid #ffcc00;
+  background-color: #ffcc00; 
+}
+.statusCompleted {
+  /* padding-left: 1% !important; */
+  border-radius: 14px;
+    border-right: 19%;
+    background-color: #90EE90;
+    padding: 6% 3% !important;
+    border-radius: 19%;
+    color: black !important;
+}
+.statusInCompleted {
+  border-radius: 14px;
+    border-right: 19%;
+    background-color:#90EE90 !important;
+    padding: 0.5% 1%;
+    border-radius: 19%;
+    color: black !important;
+}

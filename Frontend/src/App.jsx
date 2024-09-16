@@ -1,7 +1,7 @@
 // Import react
 import React from "react";
 // Import the Routes and Route components from react-router
-import { Routes, Route } from "react-router";
+
 
 import Home from "./markup/pages/Home";
 // Import the contactus components
@@ -20,7 +20,8 @@ import "./assets/template_assets/css/bootstrap.css";
 import "./assets/template_assets/css/style.css";
 import "./assets/template_assets/css/responsive.css";
 import "./assets/template_assets/css/color.css";
-
+import { Routes, Route } from "react-router";
+import "@fortawesome/fontawesome-free/css/all.min.css";
 // Import the custom css file
 import "./assets/styles/custom copy.css";
 import "./assets/styles/custom.css";
@@ -40,6 +41,16 @@ import EditServicepage from "./markup/pages/admin/EditServicepage.jsx";
 import AddCustomer from "./markup/pages/admin/AddCustomer.jsx";
 import Customers from "./markup/pages/admin/Customers.jsx";
 import EditCustomer from "./markup/pages/admin/EditCustomer.jsx";
+
+import CreateNewOrder from "./markup/pages/admin/CreateNewOrder.jsx";
+import CustomerProfile from "./markup/pages/admin/OrderCustomerProfile.jsx";
+import VechelDetail from "./markup/pages/admin/VehicelDetailPeg.jsx";
+import CustomerOrder from "./markup/components/Admin/AddNewOrder/CoustmerOrder/CoustmerOrder.jsx";
+import CustomerOrderDetail from "./markup/pages/order/AddNeworder/CoustmerOrderDetail.jsx";
+import Order from "./markup/pages/order/Order.jsx";
+import Edit from "./markup/components/Admin/AddNewOrder/EditOrder/EditVechel.jsx";
+import EditOrder from "../src/markup/pages//admin/EditOrder.jsx";
+import EditVehicle from "./markup/pages/admin/EditVheicle.jsx";
 // About Customer Management End
 
 function App() {
@@ -65,7 +76,7 @@ function App() {
         <Route
           path="/admin/add-employee"
           element={
-            <PrivateAuthRoute roles={[3]}>
+            <PrivateAuthRoute roles={[2, 3]}>
               <AddEmployee />
             </PrivateAuthRoute>
           }
@@ -135,6 +146,68 @@ function App() {
           }
         />
         {/* Customer Management End */}
+{/* ************************************************************* */}
+        {/* order page start **/}
+        <Route
+          path="/admin/order"
+          element={
+            <PrivateAuthRoute roles={[2, 3]}>
+              <CreateNewOrder />
+            </PrivateAuthRoute>
+          }
+        />
+        {/* // add orderCustomerProfile in order route */}
+        <Route
+          path="/admin/customer/order/:id"
+          element={
+            <PrivateAuthRoute roles={[2, 3]}>
+              <CustomerProfile />
+            </PrivateAuthRoute>
+          }
+        />
+        <Route
+          path="/admin/customer/vehicle/:id"
+          element={
+            <PrivateAuthRoute roles={[2, 3]}>
+              <VechelDetail />
+            </PrivateAuthRoute>
+          }
+        />
+        <Route
+          path="/admin/order/:id"
+          element={
+            <PrivateAuthRoute roles={[2, 3]}>
+              <CustomerOrderDetail />
+            </PrivateAuthRoute>
+          }
+        />
+        <Route
+          path="/admin/orders"
+          element={
+            <PrivateAuthRoute roles={[2, 3]}>
+              <Order />
+            </PrivateAuthRoute>
+          }
+        />
+
+        <Route
+          path="/admin/order/edit/:id"
+          element={
+            <PrivateAuthRoute roles={[2, 3]}>
+              <EditOrder />
+            </PrivateAuthRoute>
+          }
+        />
+        <Route
+          path="/admin/vehicle/edit/:id"
+          element={
+            <PrivateAuthRoute roles={[2, 3]}>
+              <EditVehicle />
+            </PrivateAuthRoute>
+          }
+        />
+        {/* order page end */}
+   {/* ************************************************************** */}
       </Routes>
       <Footer />
     </>

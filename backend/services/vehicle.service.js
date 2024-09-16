@@ -37,18 +37,16 @@ async function createVehicle(vehicle) {
     }
 
     // Check if the customer_id exists
-    const customerCheckQuery = "SELECT * FROM customer_identifier WHERE customer_id = ?";
-    const customerRows = await conn.query(customerCheckQuery, [vehicle.customer_id]);
+    const customerCheckQuery =
+      "SELECT * FROM customer_identifier WHERE customer_id = ?";
+    const customerRows = await conn.query(customerCheckQuery, [
+      vehicle.customer_id,
+    ]);
     if (!customerRows || customerRows.length === 0) {
       throw new Error("Customer ID does not exist.");
     }
 
-    // // Check if the provided id exists in customer_identifier
-    // const idCheckQuery = "SELECT * FROM customer_identifier WHERE id = ?";
-    // const idRows = await conn.query(idCheckQuery, [vehicle.id]);
-    // if (!idRows || idRows.length === 0) {
-    //   throw new Error("ID does not exist in customer_identifier.");
-    // }
+    
 
     // Prepare SQL query
     const query = `
@@ -89,10 +87,6 @@ async function createVehicle(vehicle) {
   }
 }
 
-
-
-
-
 async function getAllVehicles(customer_id) {
   try {
     const query = "SELECT * FROM customer_vehicle_info WHERE customer_id = ?";
@@ -116,6 +110,7 @@ async function getVehicleById(id) {
   }
 }
 
+
 async function doesVehicleExist(vehicle_id, customer_id) {
   try {
     const query =
@@ -131,15 +126,10 @@ async function doesVehicleExist(vehicle_id, customer_id) {
 async function updateVehicle(vehicle) {
   try {
     const query =
-      "UPDATE customer_vehicle_info SET vehicle_year = ?, vehicle_make = ?, vehicle_model = ?, vehicle_type = ?, vehicle_mileage = ?, vehicle_tag = ?, vehicle_serial = ?, vehicle_color = ? WHERE vehicle_id = ? AND customer_id = ?";
+      "UPDATE customer_vehicle_info SET vehicle_mileage = ?, vehicle_tag = ?, vehicle_color = ? WHERE vehicle_id = ? AND customer_id = ?";
     const result = await conn.query(query, [
-      vehicle.vehicle_year,
-      vehicle.vehicle_make,
-      vehicle.vehicle_model,
-      vehicle.vehicle_type,
       vehicle.vehicle_mileage,
       vehicle.vehicle_tag,
-      vehicle.vehicle_serial,
       vehicle.vehicle_color,
       vehicle.vehicle_id,
       vehicle.customer_id,
@@ -152,23 +142,82 @@ async function updateVehicle(vehicle) {
   }
 }
 
-
-async function deleteVehicle(id) {
+async function deleteVehicleByOrderId(orderId) {
   try {
-    console.log(`Attempting to delete vehicle with ID: ${id}`);
+    console.log(
+      `Attempting to delete vehicle related to order with ID: ${orderId}`
+    );
 
+    // Step 1: Retrieve the vehicle_id from the orders table using the provided id
+    const [order] = await conn.query(
+      "SELECT vehicle_id FROM orders WHERE id = ?",
+      [orderId]
+    );
 
-    const query = "DELETE FROM customer_vehicle_info WHERE id = ?";
-    const result = await conn.query(query, [id]);
+    if (order.length === 0) {
+      console.log("Order not found with the provided ID");
+      return { status: 404, message: "Order not found" };
+    }
+    console.log(order);
+    const vehicleId = order.vehicle_id;
+    console.log(`Vehicle ID retrieved: ${vehicleId}`);
 
-    console.log(`Delete result: ${JSON.stringify(result)}`);
-    return result.affectedRows === 1;
+    // Step 2: Delete related records from order_info
+    await conn.query(
+      "DELETE FROM order_info WHERE order_id IN (SELECT order_id FROM orders WHERE vehicle_id = ?)",
+      [vehicleId]
+    );
+
+    console.log("Deleted related records from order_info");
+
+    // Step 3: Delete related records from order_services
+    await conn.query(
+      "DELETE FROM order_services WHERE order_id IN (SELECT order_id FROM orders WHERE vehicle_id = ?)",
+      [vehicleId]
+    );
+
+    console.log("Deleted related records from order_services");
+
+    // Step 4: Delete all orders related to the vehicle_id
+    const deleteOrdersResult = await conn.query(
+      "DELETE FROM orders WHERE vehicle_id = ?",
+      [vehicleId]
+    );
+
+    if (deleteOrdersResult.affectedRows === 0) {
+      console.log(
+        "No orders were deleted. The vehicle might not be associated with any orders."
+      );
+    } else {
+      console.log(
+        `Deleted ${deleteOrdersResult.affectedRows} orders related to vehicle ID: ${vehicleId}`
+      );
+    }
+
+    // Step 5: Delete the vehicle from the customer_vehicle_info table
+    const deleteVehicleResult = await conn.query(
+      "DELETE FROM customer_vehicle_info WHERE vehicle_id = ?",
+      [vehicleId]
+    );
+
+    if (deleteVehicleResult.affectedRows === 0) {
+      console.log("Vehicle not found in customer_vehicle_info, returning 404");
+      return {
+        status: 404,
+        message: "Vehicle not found in customer_vehicle_info",
+      };
+    }
+
+    console.log("Vehicle deleted successfully from both tables");
+    return {
+      status: 200,
+      message: "Vehicle deleted successfully from both tables",
+    };
   } catch (err) {
-    console.error("Error deleting vehicle:", err);
-    throw err;
+    console.error("Error occurred while deleting vehicle:", err);
+    return { status: 500, message: "An unexpected error occurred" };
   }
 }
-
 
 module.exports = {
   createVehicle,
@@ -176,5 +225,8 @@ module.exports = {
   getVehicleById,
   doesVehicleExist,
   updateVehicle,
-  deleteVehicle,
+  //deleteVehicle,
+  deleteVehicleByOrderId,
+
+  // fetchVehicleById
 };

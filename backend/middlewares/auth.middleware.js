@@ -30,13 +30,13 @@ const verifyToken = async (req, res, next) => {
   });
 }
 
-
+// A function to check if the user is an admin
 const isAdmin = async (req, res, next) => {
   // let token = req.headers["x-access-token"];
   console.log(req.employee_email);
   const employee_email = req.employee_email;
   const employee = await employeeService.getEmployeeByEmail(employee_email);
-  if (employee[0].company_role_id === 3 || employee[0].company_role_id === 2) {
+  if (employee[0].company_role_id === 3||employee[0].company_role_id === 2) {
     next();
   } else {
     return res.status(403).send({

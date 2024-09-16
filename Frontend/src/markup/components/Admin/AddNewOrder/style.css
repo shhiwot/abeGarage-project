@@ -1,0 +1,237 @@
+/* Default styles for screens larger than 1024px */
+.search-box-container {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  position: relative;
+  margin-bottom: 41px;
+  text-align: center;
+  width: 174%; /* Width is 174% of the container */
+}
+
+.search-input-wrapper {
+  display: flex;
+  align-items: center;
+  width: 100%; /* Match the width of the container */
+}
+
+.search-box-container input {
+  width: 100%; /* Input field takes full width of its container */
+  padding: 12px;
+  padding-left: 18px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+textarea, input[type="text"] {
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 0px !important;
+}
+.search-box-container .search-icon {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 10px;
+  margin-left: -40px; /* Adjust positioning if necessary */
+  z-index: 1;
+}
+
+.search-box-container .search-icon svg {
+  font-size: 18px;
+}
+
+.search-box-container .dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%; /* Fixed width for dropdown */
+  border: 1px solid #ccc;
+  background-color: rgba(255, 255, 255, 0.9); /* Transparent background */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+  margin-bottom: 50px; /* Adjust as needed to prevent overlap */
+}
+
+.dropdown-table {
+  width: 100%; /* Table matches width of the dropdown */
+  border-collapse: collapse;
+}
+
+.dropdown-table th,
+.dropdown-table td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.dropdown-table th {
+  background-color: #f4f4f4;
+}
+
+.profile-icon {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: #007bff; /* Adjust color as needed */
+}
+
+.profile-icon:hover {
+  color: #0056b3; /* Adjust color as needed */
+}
+
+.section-Wrapper {
+  height: 40vw;
+}
+
+.outer-container {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Box shadow for the section */
+  border-radius: 8px; /* Optional: adds rounded corners */
+  padding: 20px; /* Optional: adds padding inside the section */
+  background: #fff; /* Optional: sets background color to white */
+  margin: 20px; /* Optional: adds margin around the section */
+}
+
+/* Media Queries for smaller screens */
+
+/* For screens smaller than 1024px */
+@media (max-width: 1023px) {
+  .search-box-container {
+    width: 100%; /* Adjust width to fit within the container */
+    margin-bottom: 20px; /* Adjust bottom margin */
+  }
+
+  .search-box-container .search-icon {
+    margin-left: 0; /* Reset margin for smaller screens */
+    position: static; /* Reset positioning for better alignment */
+  }
+
+  .search-box-container input {
+    padding-left: 10px; /* Adjust padding to fit well with the icon */
+  }
+
+  .search-box-container .dropdown {
+    max-height: 300px; /* Limit height for dropdown */
+    overflow-y: auto; /* Enable scrolling if needed */
+    margin-bottom: 20px; /* Adjust margin to fit within the container */
+  }
+
+  .dropdown-table th,
+  .dropdown-table td {
+    font-size: 14px; /* Adjust font size for better readability */
+  }
+
+  .outer-container {
+    padding: 15px; /* Adjust padding for smaller screens */
+    margin: 10px; /* Adjust margin for smaller screens */
+  }
+}
+
+/* For screens smaller than 768px (optional, for even smaller devices) */
+@media (max-width: 768px) {
+  .search-box-container {
+    margin-bottom: 15px; /* Further reduce bottom margin */
+  }
+
+  .search-box-container .dropdown {
+    margin-bottom: 10px; /* Further reduce margin for dropdown */
+  }
+
+  .dropdown-table th,
+  .dropdown-table td {
+    font-size: 12px; /* Further reduce font size for very small screens */
+  }
+
+  .outer-container {
+    padding: 10px; /* Further reduce padding */
+    margin: 5px;
+   margin-top: 16%; /* Further reduce margin */
+  }
+}
+/* Media Queries for very small screens */
+
+/* For screens smaller than 425px */
+@media (max-width: 430px) {
+  .search-input-wrapper {
+    
+    width: 141%;
+}
+  .search-box-container {
+    width: 100%; /* Ensure the search box container fits within the parent */
+    margin-bottom: 15px; /* Reduce bottom margin for better fit */
+  }
+  .section-Wrapper {
+    height: 100vw;
+  }
+  .search-box-container .search-icon {
+    margin-left: 0; /* Reset margin for better alignment */
+    position: static; /* Ensure proper positioning */
+  }
+.auto-container {
+    width: 101%;
+   
+    padding: 0px 15px;
+    margin: 15% -11%;
+}
+  .search-box-container input {
+    padding-top: 5%;
+    padding-left: 5px;
+    font-size: 14px;
+    padding-bottom: 7%; /* Reduce font size for better readability */
+  }
+  .contact-section .contact-title h2 {
+    font-size: 25px;
+  }
+  .contact-section .contact-title h2:after {
+    right: -60px;
+    bottom: 7px;
+    height: 1px;
+  }
+  .search-box-container .dropdown {
+    max-height: 250px; /* Reduce dropdown height for small screens */
+    overflow-y: auto; /* Enable scrolling if needed */
+    margin-bottom: 10px; /* Adjust margin to fit better */
+  }
+
+  .dropdown-table th,
+  .dropdown-table td {
+    font-size: 12px; /* Further reduce font size for very small screens */
+  }
+
+  .outer-container {
+    padding: 10px; /* Reduce padding */
+    margin: 19px 5px 17px 5px; /* Reduce margin */
+  }
+
+     .theme-btn {
+        margin-top: 8%;
+        font-size: 10px;
+        padding: 7px;
+    }
+    textarea, input[type="text"] {
+    width: 76% !important;
+}
+}
+
+/* @media (max-width: 768px) {
+  .section-Wrapper {
+    height: 100vw;
+  }
+  .contact-section .contact-title h2 {
+    margin-left: -26px;
+    font-size: 20px;
+  }
+
+ .contact-section .contact-title h2:after {
+        right: -58px;
+        bottom: 8px;
+        height: 1.4px;
+    }
+
+
+.search-box-container {
+    
+    margin-left: -54px;
+}} */
