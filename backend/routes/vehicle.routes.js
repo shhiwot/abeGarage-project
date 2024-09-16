@@ -12,6 +12,12 @@ router.post("/api/vehicle", [authMiddleware.verifyToken, authMiddleware.isAdmin]
 router.get("/api/vehicles/:customer_id", [authMiddleware.verifyToken, authMiddleware.isAdmin], vehicleController.getAllVehicles);
 //create a route to handle the get single vehicle request on get
 router.get("/api/vehicle/:id", [authMiddleware.verifyToken, authMiddleware.isAdmin], vehicleController.getVehicleById);
+//create a route to handle the get single vehicle request on get
+// router.get(
+//   "/api/vehicle/",
+//   [authMiddleware.verifyToken, authMiddleware.isAdmin],
+//   vehicleController.handleGetVehicleById
+// );
 //create a route to handle the update vehicle request on put
 router.put("/api/vehicle/", [authMiddleware.verifyToken, authMiddleware.isAdmin], vehicleController.updateVehicle);
 //create a route to handle the delete vehicle request on delete

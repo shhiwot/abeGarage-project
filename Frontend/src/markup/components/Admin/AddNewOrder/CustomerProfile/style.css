@@ -1,0 +1,146 @@
+/* CustomerInfo.css */
+
+.inner-column {
+  position: relative;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* .info {
+  
+} */
+.display{
+  width: 164%;
+}
+.dropdown-table{width: 100%;}
+.close-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 25px; /* Decrease size */
+  height: 25px; /* Decrease size */
+  background-color: red;
+  border-radius: 5px; /* For rounded corners, if desired */
+  cursor: pointer;
+  margin-top: -5px; /* Push the icon upward */
+}
+
+.close-icon svg {
+  color: white; /* Icon color */
+  font-size: 16px; /* Decrease icon size */
+}
+
+
+/* Ensure the table takes up full width */
+.dropdown-table {
+  width: 100%;
+  border-collapse: collapse; /* Ensures that borders are collapsed into single borders */
+}
+
+/* Style table headers and cells */
+.dropdown-table th, .dropdown-table td {
+  border: none; /* Remove all borders by default */
+  padding: 8px; /* Padding for cells */
+  text-align: left; /* Align text to the left */
+}
+
+/* Add horizontal borders only */
+.dropdown-table thead th {
+  border-bottom: 2px solid #ddd; /* Horizontal line under headers */
+}
+
+.dropdown-table tbody tr {
+  border-bottom: 1px solid #ddd; /* Horizontal line between rows */
+}
+
+/* Style for odd rows */
+.dropdown-table tbody tr:nth-child(odd) {
+  background-color: #f0f0f0; /* Light grey background for odd rows */
+}
+
+/* Style for even rows (if desired) */
+.dropdown-table tbody tr:nth-child(even) {
+  background-color: #fff; /* White background for even rows */
+}
+
+/* Style the button */
+button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+/* This is the class that will be applied to the elements */
+.bold-on-hover {
+  transition: font-weight 0.3s ease; /* Smooth transition effect */
+}
+
+.bold-on-hover:hover {
+  font-weight: bold; /* Make text bold on hover */
+}
+
+@media (max-width: 430px) {
+ .contact-section .contact-title h2 {
+    position: relative;
+    font-size: 31px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    line-height: 1.4em;
+    display: inline-block;
+}
+}
+
+/* Ensure the table is responsive */
+@media (max-width: 768px) {
+ 
+contact-section .contact-title h2{
+    font-size: 20px;
+}
+   .display {
+    width: 100%;
+}
+  .dropdown-table {
+    display: block; /* Makes the table block-level to allow horizontal scrolling */
+    overflow-x: auto; /* Allows horizontal scrolling */
+    white-space: nowrap; /* Prevents wrapping of table cells */
+  }
+  
+  .dropdown-table thead {
+    display: none; /* Hide the table header */
+  }
+  
+  .dropdown-table, .dropdown-table tbody, .dropdown-table tr {
+    display: block; /* Makes table rows block-level to allow stacking */
+  }
+
+  .dropdown-table td {
+    display: flex; /* Allows flexible display of table cells */
+    justify-content: space-between; /* Aligns cell content to the edges */
+    padding: 10px; /* Adds padding to cells */
+    border-bottom: 1px solid #ddd; /* Adds a border between rows */
+  }
+
+  .dropdown-table td::before {
+    content: attr(data-label); /* Adds a label before each cell's content */
+    font-weight: bold; /* Makes the label bold */
+    display: block; /* Displays the label on top of the cell content */
+  }
+  
+  .dropdown-table td:last-child {
+    border-bottom: none; /* Removes the bottom border from the last cell */
+  }
+}

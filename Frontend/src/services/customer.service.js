@@ -47,11 +47,11 @@ const getAllCustomers = async (loggedInEmployeeToken) => {
     const data = await response.json();
     console.log(data);
     // Check the status of the returned data
-    if (!data) {
-      throw new Error(
-        "Failed to fetch customer: " + (data.message || "Unknown error")
-      );
-    }
+    // if (!data) {
+    //   throw new Error(
+    //     "Failed to fetch customer: " + (data.message || "Unknown error")
+    //   );
+    // }
     return data; // Return the data to be used by the calling code
   } catch (error) {
     console.error("Error fetching customer:", error);
@@ -73,12 +73,12 @@ const updateCustomer = async (formData, loggedInEmployeeToken) => {
   try {
     const response = await fetch(`${api_url}/api/customer/`, requestOptions);
     console.log(response);
-    // if (!response.ok) {
-    //   const errorText = await response.text();
-    //   throw new Error(
-    //     `HTTP error! Status: ${response.status}, Details: ${errorText}`
-    //   );
-    // }
+    if (!response.ok) {
+      const errorText = await response.text();
+      throw new Error(
+        `HTTP error! Status: ${response.status}, Details: ${errorText}`
+      );
+    }
 
     const data = await response.json();
     console.log(data)
