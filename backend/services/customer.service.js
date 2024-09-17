@@ -17,7 +17,7 @@ async function createCustomer(customer) {
       customer.customer_email,
       customer.customer_phone_number,
       customer.customer_hash,
-      
+
     ]);
 
     if (result1.affectedRows !== 1) {
