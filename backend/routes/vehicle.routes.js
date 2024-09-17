@@ -1,26 +1,42 @@
-//import express
-const express = require("express");   
-//call the router method from express to create the router
-const router = express.Router();
-//import the vehicle controller
+
+// Import necessary modules
+const express = require("express");
 const vehicleController = require("../controllers/vehicle.controller");
-//import the auth middleware
 const authMiddleware = require("../middlewares/auth.middleware");
-//create a route to handle the add vehicle request on post
-router.post("/api/vehicle", [authMiddleware.verifyToken, authMiddleware.isAdmin], vehicleController.createVehicle);
-//create a route to handle the get all vehicles request per customer on get
-router.get("/api/vehicles/:customer_id", [authMiddleware.verifyToken, authMiddleware.isAdmin], vehicleController.getAllVehicles);
-//create a route to handle the get single vehicle request on get
-router.get("/api/vehicle/:id", [authMiddleware.verifyToken, authMiddleware.isAdmin], vehicleController.getVehicleById);
-//create a route to handle the get single vehicle request on get
-// router.get(
-//   "/api/vehicle/",
-//   [authMiddleware.verifyToken, authMiddleware.isAdmin],
-//   vehicleController.handleGetVehicleById
-// );
-//create a route to handle the update vehicle request on put
-router.put("/api/vehicle/", [authMiddleware.verifyToken, authMiddleware.isAdmin], vehicleController.updateVehicle);
-//create a route to handle the delete vehicle request on delete
-router.delete("/api/vehicle/:id", [authMiddleware.verifyToken, authMiddleware.isAdmin], vehicleController.deleteVehicle);
-//export the router
+
+// Create the router
+const router = express.Router();
+
+// Define routes with middleware and controller
+router.get(
+  "/api/vehicles/:customer_id",
+  [authMiddleware.verifyToken, authMiddleware.isAdmin],
+  vehicleController.getAllVehicles
+);
+
+router.get(
+  "/api/vehicle/:id",
+  [authMiddleware.verifyToken, authMiddleware.isAdmin],
+  vehicleController.getVehicleById
+);
+
+router.put(
+  "/api/vehicle/",
+  [authMiddleware.verifyToken, authMiddleware.isAdmin],
+  vehicleController.updateVehicle
+);
+
+router.delete(
+  "/api/vehicle/:id",
+  [authMiddleware.verifyToken, authMiddleware.isAdmin],
+  vehicleController.deleteVehicle
+);
+
+router.post(
+  "/api/vehicle",
+  [authMiddleware.verifyToken, authMiddleware.isAdmin],
+  vehicleController.createVehicle
+);
+
+// Export the router
 module.exports = router;

@@ -62,7 +62,7 @@ const {id}=useParams()
   };
 
   const handleProfile = (id) => {
-    navigate(`/admin/customer-profile/${id}`);
+    navigate(`/admin/customer/order/${id}`);
   };
 
   const filteredCustomers = customers.filter((customer) =>
