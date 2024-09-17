@@ -186,7 +186,7 @@ const getAllServices = async (token) => {
     throw error;
   }
 };
-const createOrder = async (data, token) => {
+const createOrder = async (formData, token) => {
   try {
     const requestOptions = {
       method: "POST",
@@ -194,11 +194,11 @@ const createOrder = async (data, token) => {
         "Content-Type": "application/json",
         "x-access-token": token,
       },
-      body: JSON.stringify(data), // Ensure the data object matches backend expectations
+      body: JSON.stringify(formData), // Ensure the data object matches backend expectations
     };
 
     const response = await fetch(`${api_url}/api/order`, requestOptions);
-
+     console.log(response)
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);
     }
