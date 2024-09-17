@@ -1,0 +1,29 @@
+.status {
+  display: flex;
+  align-items: center;
+  width: 120%;
+}
+
+.status input[type="checkbox"] {
+  margin-right: 8px; /* Space between checkbox and label */
+}
+.contact-wrapper {
+    position: absolute;
+    top: 0px;
+    left: 15px;
+}
+
+ .statusInCompleted{
+  background-color:green;
+} 
+.active{
+  width: 100%;
+   background-color:yellow;
+   
+}
+
+.status input {
+    margin-right: -2px;
+}
+
+

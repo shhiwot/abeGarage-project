@@ -1,0 +1,80 @@
+/* src/components/ConfirmationModal.css */
+.confirmation-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 80%;
+  max-width: 500px;
+  z-index: 1000; /* Ensure the modal is on top of other content */
+}
+
+.confirmation-overlay {
+  background: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999; /* Overlay should be behind the modal */
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.confirm-button {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin-left: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.cancel-button {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.service-item {
+  width: 100% !important;
+}
+.add-service-form input,
+.add-service-form textarea {
+  margin-top: 1%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.add-service-form button {
+  margin-top: 5%;
+}
+.service-description{
+  padding:1% 10% 10% 1% !important;
+}
+@media (max-width: 768px) {
+  .service-actions {
+    display: flex;
+    flex-direction: column;
+  }
+  .add-service-form input,
+  .add-service-form textarea {
+    margin-top: 3%;
+  }
+  textarea,
+  input[type="text"] {
+    width: 100% !important;
+  }
+}
+
+/* src/components/ConfirmationModal.css */
+/* Add this to your CSS file */
+

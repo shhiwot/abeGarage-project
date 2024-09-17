@@ -13,14 +13,15 @@ async function checkIfServiceExists(id) {
   return false;
 }
 
-// A function to create a new service
+// A function to create a new service 
 async function createService(service) {
+  console.log("Calling createService with:", service);
   let createdService = [];
   try {
     console.log("Calling createService with:", service);
     // generate a unique string ID
     const id = uuidv4().toUpperCase();
-    //check if service already exists
+    //cheack if service already exists
     const serviceExists = await checkIfServiceExists(id);
     console.log("Service exists:", serviceExists);
     if (serviceExists) {
@@ -28,19 +29,29 @@ async function createService(service) {
       return false;
     }
 
+
     // insert service_name and  service_description into the common_services table with the generated ID
 
-    const query =
-      "INSERT INTO common_services (id, service_name, service_description) VALUES (?, ?, ?)";
-    console.log("About to execute query:", query);
-    const rows = await conn.query(query, [
-      id,
-      service.service_name,
-      service.service_description,
-    ]);
+   const query =
+     "INSERT INTO common_services (id, service_name, service_description, service_price) VALUES (?, ?, ?, ?)";
+   console.log("About to execute query:", query);
+   console.log(
+     "With values:",
+     id,
+     service.service_name,
+     service.service_description,
+     service.service_price
+   );
+   const rows = await conn.query(query, [
+     id,
+     service.service_name,
+     service.service_description,
+     service.service_price,
+   ]);
+
     console.log("Query executed. Rows:", rows);
     console.log(rows);
-    if (rows.affectedRows !== 1) {
+ if (rows.affectedRows !== 1) {
       console.log("Error inserting service, returning false");
       return false;
     } else {
@@ -48,13 +59,16 @@ async function createService(service) {
       createdService = {
         id: id,
       };
-    }
+    } 
   } catch (err) {
-    console.log("Error creating service:", err);
+    console.log("Error creating service:", err);     
     console.log(err);
+         
   }
   return createdService;
-}
+} 
+
+
 
 // A function to get service by id
 async function getServiceById(id) {
@@ -62,10 +76,10 @@ async function getServiceById(id) {
     console.log("Calling getServiceById with:", id);
     const [service] = await conn.query(
       "SELECT * FROM common_services WHERE id = ?",
-      [id]
+      [id]  
     );
     console.log("Query executed. Rows:", service);
-
+       
     if (service.length === 0) {
       console.log("Service not found, returning 404");
       return { status: 404, message: "Service not found" };
@@ -75,27 +89,29 @@ async function getServiceById(id) {
   } catch (error) {
     console.error("Error in getServiceById service:", error);
     console.log(error);
-    console.error("Error in getServiceById service:", error);
+    console.error("Error in getServiceById service:", error);           
     return { status: 500, message: "Internal server error" };
   }
 }
 
+
 // A function to get all services
 async function getServices() {
-  try {
+  try {   
     const services = await conn.query("SELECT * FROM common_services");
     return services;
-  } catch (error) {
+  } catch (error) {  
     console.error("Error in getServices service:", error);
     return { status: 500, message: "Internal server error" };
   }
-}
+}     
 
 // A function to delete a service by ID
 
 async function deleteService(id) {
   try {
     const [service] = await conn.query(
+    
       "SELECT * FROM common_services WHERE id = ?",
       [id]
     );
@@ -110,6 +126,7 @@ async function deleteService(id) {
     );
 
     if (result.affectedRows === 0) {
+   
       return { status: 404, message: "Service not found" };
     }
 
@@ -120,14 +137,13 @@ async function deleteService(id) {
   }
 }
 
-// a function to update service
-async function updateService(id, serviceData) {
-  const { service_name, service_description } = serviceData;
 
-  try {
-    await conn.query(
-      "UPDATE common_services SET service_name = ?, service_description = ? WHERE  id = ?",
-      [service_name, service_description, id]
+// a function to update service
+async function updateService( service) {  
+  try {     
+    const services = await conn.query(
+      "UPDATE common_services SET service_name = ?, service_description = ? WHERE  service_id = ?",
+      [service.service_name, service.service_description, service.service_id]
     );
     return { status: 200, message: "Service updated successfully" };
   } catch (error) {
@@ -136,10 +152,6 @@ async function updateService(id, serviceData) {
   }
 }
 
-module.exports = {
-  createService,
-  getServiceById,
-  getServices,
-  deleteService,
-  updateService,
-};
+  
+
+module.exports = { createService, getServiceById, getServices, deleteService, updateService }

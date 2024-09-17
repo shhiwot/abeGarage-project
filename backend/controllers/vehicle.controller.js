@@ -3,6 +3,7 @@ const vehicleService = require("../services/vehicle.service");
 async function createVehicle(req, res, next) {
   try {
     const vehicle = await vehicleService.createVehicle(req.body);
+    console.log(req.body);
     if (vehicle) {
       res.status(201).json({
         message: "Vehicle created successfully",
@@ -72,12 +73,7 @@ async function updateVehicle(req, res, next) {
     const requiredFields = [
       "vehicle_id",
       "customer_id",
-      "vehicle_model",
-      "vehicle_year",
-      "vehicle_make",
-      "vehicle_type",
       "vehicle_mileage",
-      "vehicle_serial",
       "vehicle_tag",
       "vehicle_color",
     ];
@@ -127,8 +123,9 @@ async function updateVehicle(req, res, next) {
 
 
 async function deleteVehicle(req, res, next) {
+  console.log("req.params.id", req.params.id);
   try {
-    const success = await vehicleService.deleteVehicle(req.params.id);
+    const success = await vehicleService.deleteVehicleByOrderId(req.params.id);
     if (success) {
       res.status(200).json({
         message: "Vehicle deleted successfully",
@@ -151,7 +148,7 @@ async function deleteVehicle(req, res, next) {
 module.exports = {
   createVehicle,
   getAllVehicles,
-  getVehicleById,
+   getVehicleById,
   updateVehicle,
   deleteVehicle,
 };

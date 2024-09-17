@@ -1,29 +1,39 @@
+/* Table.module.css */
+
+/* General styles */
 .customTable {
   margin-left: 5%;
-  margin-top: 10%;
-    width: 80%;
-    border-collapse: collapse;
+  margin-top: 5%;
+  width: 80%;
+  border-collapse: collapse;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
 }
 
 .customTable th, .customTable td {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
 }
+
 .contact-section {
-    padding: 0px 0px 70px !important;
+  padding: 0px 0px 70px !important;
 }
+
 .customTable th {
-    background-color: white
+  background-color: white;
 }
+
 .contact-section .contact-title {
-    margin-bottom: -38px !important;
+  margin-bottom: -38px !important;
 }
+
 .customTable tr:nth-child(even) {
-    background-color:white;
+  background-color: white;
 }
+
 .customTable tr:nth-child(odd) {
-    background-color:#ECEDEF;
+  background-color: #ECEDEF;
 }
 
 .editButton {
@@ -31,8 +41,6 @@
   border: none;
   color: #007bff;
   cursor: pointer;
-     margin-left: 15%;
-  margin-right: 15%;
 }
 
 .deleteButton {
@@ -44,4 +52,53 @@
 
 .editButton:hover, .deleteButton:hover {
   opacity: 0.7;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+  .customTable {
+    width: 100%;
+    margin: 0;
+  }
+
+  .customTable th, .customTable td {
+    padding: 6px;
+  }
+
+  .contact-section {
+    padding: 10px;
+  }
+
+  .contact-section .contact-title {
+    margin-bottom: 20px !important;
+  }
+
+  .customTable td {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: right;
+    border: none;
+    border-bottom: 1px solid #dddddd;
+  }
+
+  .customTable td::before {
+    content: attr(data-label);
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  .customTable thead {
+    display: none;
+  }
+
+  .customTable tr {
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  .editButton, .deleteButton {
+    font-size: 18px;
+  }
 }

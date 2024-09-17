@@ -73,12 +73,12 @@ const updateCustomer = async (formData, loggedInEmployeeToken) => {
   try {
     const response = await fetch(`${api_url}/api/customer/`, requestOptions);
     console.log(response);
-    // if (!response.ok) {
-    //   const errorText = await response.text();
-    //   throw new Error(
-    //     `HTTP error! Status: ${response.status}, Details: ${errorText}`
-    //   );
-    // }
+    if (!response.ok) {
+      const errorText = await response.text();
+      throw new Error(
+        `HTTP error! Status: ${response.status}, Details: ${errorText}`
+      );
+    }
 
     const data = await response.json();
     console.log(data)

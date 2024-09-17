@@ -51,8 +51,10 @@ CREATE TABLE IF NOT EXISTS `common_services` (
   `id` VARCHAR(50) NOT NULL,
   `service_name` VARCHAR(255) NOT NULL,
   `service_description` TEXT,
+  `service_price` DECIMAL(10, 2) NOT NULL DEFAULT 0.00,
   PRIMARY KEY (`service_id`)
 ) ENGINE=InnoDB;
+
 
 -- Employee tables 
 CREATE TABLE IF NOT EXISTS `employee` (
@@ -156,16 +158,16 @@ VALUES ('Employee'), ('Manager'), ('Admin');
 
 -- Generate a unique employee ID, e.g., 'EMP001'
 INSERT INTO employee (employee_id, employee_email, active_employee, added_date)
-VALUES ('E9B1484B-2106-4EFD-B246-E260797F4E41', 'admin@admin.com', 1, CURRENT_TIMESTAMP);
+VALUES ('c8a3f39aacbea423e6c54f8eb2181855', 'admin@admin.com', 1, CURRENT_TIMESTAMP);
 
 -- Insert employee_info with the same employee_id
 INSERT INTO employee_info (employee_id, employee_first_name, employee_last_name, employee_phone)
-VALUES ('E9B1484B-2106-4EFD-B246-E260797F4E41', 'Admin', 'Admin', '555-555-5555');
+VALUES ('c8a3f39aacbea423e6c54f8eb2181855', 'Admin', 'Admin', '555-555-5555');
 
 -- Password is 123456
 INSERT INTO employee_pass (employee_id, employee_password_hashed)
-VALUES ('E9B1484B-2106-4EFD-B246-E260797F4E41', '$2b$10$s77eUVnREFegk3.Wnqlxp.mFUgdf7cLzi83reog3M0U0MzarM7XMq');
+VALUES ('c8a3f39aacbea423e6c54f8eb2181855', '$2b$10$UFAYxt5e.0f3PxQaAQ8wdelaF98eJC0CfZVjK.fmW5bOYeX1u35Kq');
 
 -- Assign a role to the employee
 INSERT INTO employee_role (employee_id, company_role_id)
-VALUES ('E9B1484B-2106-4EFD-B246-E260797F4E41', 3);
+VALUES ('c8a3f39aacbea423e6c54f8eb2181855', 3);

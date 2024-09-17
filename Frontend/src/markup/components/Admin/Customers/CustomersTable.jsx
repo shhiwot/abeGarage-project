@@ -12,22 +12,29 @@ import {
 } from "react-icons/fa"; // Pagination icons
 import { FaArrowUpRightFromSquare } from "react-icons/fa6";
 import { format } from "date-fns";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+
+
+
+
+
+
+
 
 const Table = () => {
-  const [customers, setCustomers] = useState([]); // Ensure customers is an empty array initially
+  const [customers, setCustomers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [successMessage, setSuccessMessage] = useState("");
   const { employee } = useAuth();
   const navigate = useNavigate();
-
+const {id}=useParams()
   // Pagination state
   const [currentPage, setCurrentPage] = useState(1);
-  const customersPerPage = 10; // Adjust this value as needed
+  const customersPerPage = 10;
 
   // Search state
-  const [searchTerm, setSearchTerm] = useState(""); // New state to store the search input
+  const [searchTerm, setSearchTerm] = useState("");
 
   // useEffect(() => {
   //   const fetchCustomers = async () => {
@@ -59,6 +66,7 @@ const Table = () => {
           const resultCustomer = await customerService?.getAllCustomers(
             employee.employee_token
           );
+
           console.log("Fetched customers: ", resultCustomer);
 
           // Assuming the actual data you need is in resultCustomer.data
@@ -67,6 +75,7 @@ const Table = () => {
           } else {
             console.error("Invalid data format", resultCustomer);
             setCustomers([]); // Set to an empty array if data is not as expected
+
           }
         }
       } catch (error) {
@@ -84,20 +93,8 @@ const Table = () => {
   };
 
   const handleProfile = (id) => {
-    navigate(`/admin/customer-profile/${id}`);
+    navigate(`/admin/customer/order/${id}`);
   };
-
-  // Filter customers based on the search input
-  // const filteredCustomers = customers.filter((customer) =>
-  //   [
-  //     "customer_first_name",
-  //     "customer_last_name",
-  //     "customer_email",
-  //     "customer_phone_number",
-  //   ].some((key) =>
-  //     customer[key]?.toLowerCase().includes(searchTerm.toLowerCase())
-  //   )
-  // );
 
   const filteredCustomers = Array.isArray(customers)
     ? customers.filter((customer) =>
@@ -113,6 +110,7 @@ const Table = () => {
     : [];
   console.log(filteredCustomers.length);
   // Pagination logic
+
   const totalPages = Math.ceil(filteredCustomers.length / customersPerPage);
   const indexOfLastCustomer = currentPage * customersPerPage;
   const indexOfFirstCustomer = indexOfLastCustomer - customersPerPage;
@@ -133,46 +131,32 @@ const Table = () => {
   }
 
   return (
-    <section className="contact-section">
-      <div className="contact-title" style={{ marginBottom: "50px" }}>
+    <section className={styles.section}>
+      <div className={styles.titleContainer}>
         <h2>Customers</h2>
-        {/* Search Input */}
-        <div className={`${styles.searchContainer} `}>
+        <div className={styles.searchContainer}>
           <input
             type="text"
-            className={`${styles.searchInput} `}
-            placeholder="Search for a customer using first name, last name, email, or phone number"
+            className={styles.searchInput}
+            placeholder="Search for a customer by name, email, or phone number"
             value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)} // Update search term on input change
+            onChange={(e) => setSearchTerm(e.target.value)}
           />
-          <FaSearch className={`${styles.searchIcon} `} />
+          <FaSearch className={styles.searchIcon} />
         </div>
       </div>
 
       {successMessage && (
-        <div
-          className="success-message container-fluid"
-          style={{ color: "green", marginBottom: "20px", fontSize: "20px" }}
-        >
-          {successMessage}
-        </div>
+        <div className={styles.successMessage}>{successMessage}</div>
       )}
-      {error && (
-        <div
-          className="error-message container-fluid"
-          style={{ color: "red", marginBottom: "20px" }}
-        >
-          Error: {error}
-        </div>
-      )}
+      {error && <div className={styles.errorMessage}>Error: {error}</div>}
 
-      {/* Display message if no customers */}
       {filteredCustomers.length === 0 ? (
-        <div className="container-fluid"> No customers found</div>
+        <div className={styles.noCustomers}>No customers found</div>
       ) : (
         <>
-          <div className="table-responsive">
-            <table className={`${styles.customTable} table container-fluid`}>
+          <div className={styles.tableWrapper}>
+            <table className={styles.customTable}>
               <thead>
                 <tr>
                   <th>ID</th>
@@ -185,7 +169,7 @@ const Table = () => {
                   <th>Edit</th>
                 </tr>
               </thead>
-              <tbody className="table container-fluid">
+              <tbody>
                 {currentCustomers.map((customer) => (
                   <tr key={customer.customer_id}>
                     <td data-label="ID">{customer.customer_id}</td>
@@ -226,39 +210,34 @@ const Table = () => {
             </table>
           </div>
 
-          {/* Pagination Controls */}
           <div className={styles.paginationContainer}>
             <button
               className={styles.paginationButton}
               onClick={handleFirstPage}
               disabled={currentPage === 1}
             >
-              <FaAngleDoubleLeft />
-              First
+              <FaAngleDoubleLeft /> First
             </button>
             <button
               className={styles.paginationButton}
               onClick={handlePreviousPage}
               disabled={currentPage === 1}
             >
-              <FaAngleLeft />
-              Previous
+              <FaAngleLeft /> Previous
             </button>
             <button
               className={styles.paginationButton}
               onClick={handleNextPage}
               disabled={currentPage === totalPages}
             >
-              Next
-              <FaAngleRight />
+              Next <FaAngleRight />
             </button>
             <button
               className={styles.paginationButton}
               onClick={handleLastPage}
               disabled={currentPage === totalPages}
             >
-              Last
-              <FaAngleDoubleRight />
+              Last <FaAngleDoubleRight />
             </button>
           </div>
         </>
@@ -268,3 +247,4 @@ const Table = () => {
 };
 
 export default Table;
+

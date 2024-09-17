@@ -1,0 +1,14 @@
+.vehicle-details-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.vehicle-details-list li {
+  margin-bottom: 10px;
+}
+
+.edit-info {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+}

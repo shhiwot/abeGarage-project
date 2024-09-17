@@ -30,7 +30,7 @@ app.listen(port, () => {
   console.log(`Server running on port: ${port}`);
 });
 
-//generate a random string for hashed password 
+// //generate a random string for hashed password 
 // const bcrypt = require("bcrypt");
 
 // const password = "123456";
@@ -40,3 +40,13 @@ app.listen(port, () => {
 //   if (err) throw err;
 //   console.log("Hashed Password:", hash);
 // });
+
+// const crypto = require("crypto");
+
+// function generateRandomString(length = 32) {
+//   return crypto.randomBytes(length).toString("hex").slice(0, length);
+// }
+
+// // Example usage
+// console.log(generateRandomString());
+

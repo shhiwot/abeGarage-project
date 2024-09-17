@@ -1,0 +1,136 @@
+/* Ensure the inner-column has a defined width */
+.inner-column {
+  width: 100%;
+  box-sizing: border-box; /* Include padding and border in element's total width and height */
+}
+
+/* Styling for the container holding service items */
+.service-list-container {
+  padding: 10px;
+}
+
+/* Styling for each service item */
+.service-item {
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 15px;
+  padding: 15px;
+  display: flex; /* Use flexbox to align items horizontally */
+  flex-direction: column; /* Stack items vertically on small screens */
+  align-items: flex-start; /* Align items to the start of the container */
+  width: 172%; /* Make each item take full width of the container */
+  box-sizing: border-box; /* Ensure padding and border are included in the width */
+}
+
+/* Container for service name and description */
+.service-info {
+  flex: 1; /* Allow this to take up available space */
+  margin-bottom: 10px; /* Add margin between service info and checkbox */
+}
+
+/* Styling for the service name */
+.service-name {
+  font-size: 16px; /* Adjust font size for smaller screens */
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+/* Styling for the service description */
+.service-description {
+  font-size: 14px;
+  color: #666;
+}
+
+/* Styling for the checkbox */
+.service-checkbox {
+  margin-left: 0; /* Remove left margin on small screens */
+  width: 20px; /* Keep checkbox size consistent */
+  align-self: flex-start; /* Align checkbox to the start of the container */
+}
+
+/* Styling for the form */
+form {
+  margin: 0; /* Remove default margin */
+}
+
+/* Responsive styling for textareas and input fields */
+textarea,
+input[type="text"] {
+  width: 100%; /* Make input fields full width */
+  box-sizing: border-box; /* Ensure padding and border are included in width */
+  margin-bottom: 15px; /* Add margin between fields */
+}
+
+/* Responsive styling for total price */
+.total-price {
+  font-size: 16px; /* Adjust font size for smaller screens */
+  margin-bottom: 15px; /* Add margin at the bottom */
+}
+
+/* Style error messages */
+.form-error {
+  color: red;
+  font-size: 16px; /* Adjust font size for smaller screens */
+  margin-bottom: 15px; /* Add margin at the bottom */
+}
+
+/* Media Query for screens less than 768px */
+@media (max-width: 768px) {
+  .service-item {
+ /* Align items to the start of the container */
+  width: 100%; /* Make each item take full width of the container */
+  /* Ensure padding and border are included in the width */
+}
+  .contact-section .contact-title h2 {
+   
+    font-size: 24px;
+   
+}
+  .choose-service {
+    padding: 10px; /* Add padding to container */
+  }
+
+  .form-column {
+    width: 100%; /* Ensure form column takes full width */
+  }
+
+  .service-item {
+    padding: 10px; /* Reduce padding on smaller screens */
+    flex-direction: column; /* Stack items vertically */
+  }
+}
+@media (max-width: 430px) {
+      .contact-section .contact-title h2 {
+        font-size: 17px;
+    }
+    textarea.form-control {
+width: 100% !important;
+}
+    .auto-container {
+        width: 101%;
+        padding: 0px 0px;
+        margin: 15% 2%;
+    }
+    .contact-section .contact-title h2:after {
+        display: none;
+          background-color:white; 
+    }
+    .contact-form .theme-btn {
+    width: 110%;
+    font-size: 15px;
+    padding: 3px 36px;
+}
+.servicelistWrapper {
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; 
+    align-items: center;
+}  
+}

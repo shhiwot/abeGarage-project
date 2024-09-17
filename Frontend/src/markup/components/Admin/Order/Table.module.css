@@ -1,0 +1,138 @@
+/* Base Styles */
+.customTable {
+  margin: 0 auto;
+  width: 100%;
+  border-collapse: collapse;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.customTable th, .customTable td {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+.customTable th {
+  background-color: #f4f4f4;
+}
+
+.customTable tr:nth-child(odd) {
+  background-color: #f1f1f1; /* Grey background for odd rows */
+}
+
+.customTable tr:nth-child(even) {
+  background-color: #f9f9f9; /* Light background for even rows */
+}
+
+/* Status Styles */
+.statusInProgress {
+  background-color: yellow; /* Yellow for in-progress */
+  color: black;
+  padding: 3px;
+  border-radius: 10px;
+}
+
+.statusCompleted {
+  background-color:#90EE90 !important; /* Green for completed */
+  color: black;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+/* Column lines and border shadow */
+.customTable td {
+  position: relative;
+}
+button {
+    margin-right: 9%;
+    
+   
+}
+/* Media Queries for smaller screens */
+@media (max-width: 768px) {
+  .customTable {
+    display: block;
+    width: 100%;
+    border: 0;
+  }
+
+  .customTable thead {
+    display: none;
+  }
+
+  .customTable tbody {
+    display: block;
+    width: 100%;
+  }
+
+  .customTable tr {
+    display: block;
+    border: 1px solid #ddd;
+    margin-bottom: 30px;
+    padding: 10px;
+    border-radius: 5px;
+  }
+
+  .customTable td {
+    display: block;
+    text-align: left;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    position: relative;
+    padding-left: 50%;
+    white-space: nowrap;
+  }
+
+  .customTable td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 0;
+    width: 45%;
+    padding-right: 10px;
+    font-weight: bold;
+    background-color: #f4f4f4;
+    border-right: 1px solid #ddd;
+  }
+
+  .customTable td:last-child {
+    border-bottom: 0;
+  }
+
+  .contact-section {
+    padding: 10px;
+  }
+
+  .contact-section .contact-title {
+    margin-bottom: 20px !important;
+  }
+
+  /* Adjust the buttons to be more mobile-friendly */
+  .viewButton, .editButton {
+    font-size: 1.2rem; /* Adjust button size */
+    margin: 5px;
+  }
+}
+
+/* Add border and shadow on larger screens */
+@media (min-width: 769px) {
+  .customTable {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Enhanced shadow for larger screens */
+  }
+
+  .customTable th, .customTable td {
+    border: 1px solid #ccc; /* Lighter border for better column lines */
+  }
+
+  .customTable td {
+    border-right: 1px solid #ccc; /* Add border-right for column lines */
+  }
+
+  .customTable th:last-child, .customTable td:last-child {
+    border-right: none; /* Remove the border on the last column */
+  }
+}
+
+
+
