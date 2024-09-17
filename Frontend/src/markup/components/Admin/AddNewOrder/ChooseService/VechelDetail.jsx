@@ -271,7 +271,7 @@ export default function VehicleDetail() {
     fetchVehicle();
   }, [employee, id]);
 async function handleEditVehicle(type) {
-  navigate(`/admin/vehicle/edit/${id}`);
+  navigate(`/admin/vehicle/edit/${id}`,{ state: { from: location.pathname} });
 }
   async function handleDelete(type) {
     setDeleteType(type);
@@ -345,6 +345,7 @@ async function handleEditVehicle(type) {
                   <h6>
                     Edit customer info:
                     <FaEdit
+                      onClick={() => navigate(`/admin/customer-update/${customerId}`)}
                       color="red"
                       size={25}
                       style={{ paddingLeft: "5px" }}
@@ -381,10 +382,7 @@ async function handleEditVehicle(type) {
                     />
                   </h6>
                 </div>
-                <div
-                  className="close-icon"
-                  onClick={() => handleDelete(id)}
-                >
+                <div className="close-icon" onClick={() => handleDelete(id)}>
                   <FaTimes />
                 </div>
               </div>

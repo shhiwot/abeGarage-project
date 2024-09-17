@@ -214,20 +214,6 @@ import "./Table.module.css"
 //   );
 // };
 // export default Table;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 const Table = () => {
   const [orders, setOrders] = useState([]);
   const [customers, setCustomers] = useState({});
@@ -424,6 +410,12 @@ const Table = () => {
 };
 
 export default Table;
+
+
+
+
+
+
 
 
 

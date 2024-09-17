@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
 import employeeService from "../../../../../services/employee.service";
 import { useAuth } from "../../../../../Contexts/AuthContext";
 import classes from "../../EmployeeEditForm/style.module.css";
@@ -9,9 +9,12 @@ import {
 } from "../../../../../services/Order/order.service";
 import "./EditOrder.css";
 
+
+
+
+
 const EditVehicle = () => {
-  const { employee } = useAuth(); // Access employee from authentication context
-  const [vehicle, setVehicle] = useState(null);
+  const { employee } = useAuth();
   const [formData, setFormData] = useState({
     vehicle_mileage: "",
     vehicle_color: "",
@@ -22,8 +25,15 @@ const EditVehicle = () => {
   const [error, setError] = useState("");
   const { id } = useParams();
   const navigate = useNavigate();
+  const location = useLocation(); // Access current location
+  const [originalRoute, setOriginalRoute] = useState("/admin/order"); // Default route
 
   useEffect(() => {
+    // Check if location.state has a "from" property
+    if (location.state && location.state.from) {
+      setOriginalRoute(location.state.from);
+    }
+
     const fetchVehicle = async () => {
       if (employee && employee.employee_token) {
         try {
@@ -31,12 +41,9 @@ const EditVehicle = () => {
             id,
             employee.employee_token
           );
-
-          // Assuming fetchedVehicles is an array, extract the first item
           const fetchedVehicle = fetchedVehicles[0];
 
           if (fetchedVehicle) {
-            console.log(fetchedVehicle); // Debug: check the structure of fetchedVehicle
             setFormData({
               vehicle_id: fetchedVehicle.vehicle_id || "",
               customer_id: fetchedVehicle.customer_id || "",
@@ -56,7 +63,7 @@ const EditVehicle = () => {
     };
 
     fetchVehicle();
-  }, [id, employee]);
+  }, [id, employee, location.state]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -66,11 +73,9 @@ const EditVehicle = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (employee && employee.employee_token) {
-      console.log(formData);
-      console.log(formData);
       try {
         await updateVehicle(employee.employee_token, { id, ...formData });
-        navigate("/admin/order"); // Redirect to the vehicles list or another page
+        navigate(originalRoute); // Redirect to the original route
       } catch (err) {
         setError(err.message || "Failed to update vehicle");
       }
@@ -84,7 +89,6 @@ const EditVehicle = () => {
       <div className="auto-container">
         <div className="contact-title">
           <h2>Edit Vehicle</h2>
-          <h5>Fill the form below</h5>
         </div>
         <div className="row clearfix">
           <div className="form-column col-lg-7">
@@ -147,3 +151,4 @@ const EditVehicle = () => {
 };
 
 export default EditVehicle;
+

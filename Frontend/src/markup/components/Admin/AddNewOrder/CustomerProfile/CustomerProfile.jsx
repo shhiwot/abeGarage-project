@@ -175,6 +175,7 @@ function CustomerProfile() {
                   <h6 className="bold-on-hover">
                     Edit customer info:
                     <FaEdit
+                      onClick={() => navigate(`/admin/customer-update/${id}`)}
                       color="red"
                       size={25}
                       style={{ paddingLeft: "5px" }}

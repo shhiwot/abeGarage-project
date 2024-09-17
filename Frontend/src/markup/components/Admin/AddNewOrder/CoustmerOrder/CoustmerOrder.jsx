@@ -67,9 +67,20 @@ export default function VehicleDetail() {
     setDeleteType(type);
     setShowModal(true);
   }
- async function handleEditVehicle(id) {
-   navigate(`/admin/vehicle/edit/${id}`);
- }
+
+
+const handleEdit = (id) => {
+  if (id === info.vehicleId){ navigate(`/admin/vehicle/edit/${id}`, {
+    state: { from: location.pathname },
+  });}
+  if (id === info.id) {
+    navigate(`/admin/customer-update/${id}`, {
+      state: { from: location.pathname },
+    });
+  }
+   
+};
+
   async function confirmDelete() {
     setShowModal(false);
     if (employee && employee.employee_token) {
@@ -112,9 +123,9 @@ export default function VehicleDetail() {
       <div>
         <div className="titlewrap">
           <div className="row">
-            <div className="col-10">
-              <h5 className="col-10">
-                <FaArrowRight className="icon" />
+            <div className="col-10 ">
+              <h5 className="col-10 row">
+                <FaArrowRight className="icon col-1" />
                 {info.customer_first_name} {info.customer_last_name}
               </h5>
             </div>
@@ -149,7 +160,12 @@ export default function VehicleDetail() {
             </h6>
             <h6>
               Edit customer info:
-              <FaEdit color="red" size={25} style={{ paddingLeft: "5px" }} />
+              <FaEdit
+                color="red"
+                size={25}
+                style={{ paddingLeft: "5px" }}
+                onClick={() => handleEdit(info.id)}
+              />
             </h6>
           </div>
           <div className="close-icon" onClick={() => handleDelete("customer")}>
@@ -170,7 +186,7 @@ export default function VehicleDetail() {
                 color="red"
                 size={25}
                 style={{ paddingLeft: "5px" }}
-                onClick={() => handleEditVehicle(info.vehicleId)}
+                onClick={() => handleEdit(info.vehicleId)}
               />
             </h6>
           </div>

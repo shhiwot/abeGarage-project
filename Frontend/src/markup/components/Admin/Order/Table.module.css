@@ -26,11 +26,30 @@
   background-color: #f9f9f9; /* Light background for even rows */
 }
 
+/* Status Styles */
+.statusInProgress {
+  background-color: yellow; /* Yellow for in-progress */
+  color: black;
+  padding: 3px;
+  border-radius: 10px;
+}
+
+.statusCompleted {
+  background-color:#90EE90 !important; /* Green for completed */
+  color: black;
+  padding: 5px;
+  border-radius: 10px;
+}
+
 /* Column lines and border shadow */
 .customTable td {
   position: relative;
 }
-
+button {
+    margin-right: 9%;
+    
+   
+}
 /* Media Queries for smaller screens */
 @media (max-width: 768px) {
   .customTable {
@@ -114,7 +133,6 @@
     border-right: none; /* Remove the border on the last column */
   }
 }
-
 
 
 
