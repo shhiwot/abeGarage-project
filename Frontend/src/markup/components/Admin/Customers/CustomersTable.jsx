@@ -29,6 +29,29 @@ const Table = () => {
   // Search state
   const [searchTerm, setSearchTerm] = useState(""); // New state to store the search input
 
+  // useEffect(() => {
+  //   const fetchCustomers = async () => {
+  //     try {
+  //       if (employee && employee.employee_token) {
+  //         const resultCustomer = await customerService?.getAllCustomers(
+  //           employee.employee_token
+  //         );
+  //         if (resultCustomer?.status === "success") {
+  //           setCustomers(resultCustomer.customers || []); // Ensure we are setting an array
+  //         } else {
+  //           throw new Error("Failed to fetch customers");
+  //         }
+  //       }
+  //     } catch (error) {
+  //       setError(error.message);
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
+
+  //   fetchCustomers();
+  // }, [employee]);
+
   useEffect(() => {
     const fetchCustomers = async () => {
       try {
@@ -36,14 +59,18 @@ const Table = () => {
           const resultCustomer = await customerService?.getAllCustomers(
             employee.employee_token
           );
-          if (resultCustomer?.status === "success") {
-            setCustomers(resultCustomer.customers || []); // Ensure we are setting an array
+          console.log("Fetched customers: ", resultCustomer);
+
+          // Assuming the actual data you need is in resultCustomer.data
+          if (Array.isArray(resultCustomer?.customers)) {
+            setCustomers(resultCustomer.customers);
           } else {
-            throw new Error("Failed to fetch customers");
+            console.error("Invalid data format", resultCustomer);
+            setCustomers([]); // Set to an empty array if data is not as expected
           }
         }
       } catch (error) {
-        setError(error.message);
+        setError(error.message || "Failed to fetch customers");
       } finally {
         setLoading(false);
       }
@@ -61,17 +88,30 @@ const Table = () => {
   };
 
   // Filter customers based on the search input
-  const filteredCustomers = customers.filter((customer) =>
-    [
-      "customer_first_name",
-      "customer_last_name",
-      "customer_email",
-      "customer_phone_number",
-    ].some((key) =>
-      customer[key]?.toLowerCase().includes(searchTerm.toLowerCase())
-    )
-  );
+  // const filteredCustomers = customers.filter((customer) =>
+  //   [
+  //     "customer_first_name",
+  //     "customer_last_name",
+  //     "customer_email",
+  //     "customer_phone_number",
+  //   ].some((key) =>
+  //     customer[key]?.toLowerCase().includes(searchTerm.toLowerCase())
+  //   )
+  // );
 
+  const filteredCustomers = Array.isArray(customers)
+    ? customers.filter((customer) =>
+        [
+          "customer_first_name",
+          "customer_last_name",
+          "customer_email",
+          "customer_phone_number",
+        ].some((key) =>
+          customer[key]?.toLowerCase().includes(searchTerm.toLowerCase())
+        )
+      )
+    : [];
+  console.log(filteredCustomers.length);
   // Pagination logic
   const totalPages = Math.ceil(filteredCustomers.length / customersPerPage);
   const indexOfLastCustomer = currentPage * customersPerPage;
