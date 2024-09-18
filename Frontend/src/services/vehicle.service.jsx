@@ -2,7 +2,7 @@
 const api_url = import.meta.env.VITE_API_URL;
 
 const createVehicle = async (formData, loggedInEmployeeToken) => {
-  console.log(formData);
+  console.log(formData, loggedInEmployeeToken);
   const requestOptions = {
     method: "POST",
     headers: {
@@ -11,25 +11,22 @@ const createVehicle = async (formData, loggedInEmployeeToken) => {
     },
     body: JSON.stringify(formData),
   };
-  console.log("Creating vehicle with", requestOptions);
 
   try {
-    //Call this function when you want to add a new service to the system. It takes formData (service details) and the token of the logged-in user.
     const response = await fetch(`${api_url}/api/vehicle`, requestOptions);
     console.log(response);
-    if (!response.ok) {
-      const errorText = await response.text();
-      console.error(
-        `Failed to create vehicle. Status: ${response.status}, Details: ${errorText}`
-      );
-      throw new Error(`Failed to create service: ${errorText}`);
-    }
-    return response.json();
+   
+    let data=await response.json();
+    console.log(data);
+    
+    // return response.json();
+    return data;
   } catch (error) {
     console.error("Error creating vehicle:", error);
     throw error;
   }
 };
+
 
 const getAllVehicle = async (token) => {
   const requestOptions = {

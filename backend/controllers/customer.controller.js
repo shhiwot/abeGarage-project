@@ -137,6 +137,10 @@ async function updateCustomer(req, res, next) {
   }
 }
 
+
+
+
+
 //create a function to handle the delete customer request on delete
 
 //export the functions

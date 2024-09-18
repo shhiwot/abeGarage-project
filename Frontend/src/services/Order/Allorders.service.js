@@ -59,6 +59,31 @@ export const getCustomerAndVehicleInfo = async (id, token) => {
 };
   
 
+
+export const getOrdersPerCustomer = async (customerId, token) => {
+  console.log("Fetching order data for customer:", customerId);
+  
+
+  try {
+    const response = await fetch(`${api_url}/api/order/${customerId}/orders`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "x-access-token": token,
+      },  
+    });
+    
+      const data = await response.json();
+   
+    
+    console.log(data);
+    return data;
+  } catch (error) {
+    console.error("Error fetching order data:", error);
+    throw error;
+  }
+};
+
 export const getCustomerInfo = async (token, customerIds) => {
   try {
     const response = await fetch(`${api_url}/api/order/get-customer-info`, {

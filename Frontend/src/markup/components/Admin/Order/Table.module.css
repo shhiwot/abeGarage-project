@@ -1,11 +1,14 @@
 /* Base Styles */
+body {
+  overflow-x: hidden;
+}
 .customTable {
   margin: 0 auto;
   width: 100%;
   border-collapse: collapse;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   border-radius: 8px;
-  overflow: hidden;
+  
 }
 
 .customTable th, .customTable td {

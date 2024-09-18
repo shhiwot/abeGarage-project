@@ -37,6 +37,9 @@ console.log(data);
   }
 };
 
+
+
+
 const getServiceById = async (id, token) => {
   try {
     const requestOptions = {
@@ -116,6 +119,7 @@ const getCustomerVehicles = async (customer_id, token) => {
       `${api_url}/api/vehicles/${customer_id}`,
       requestOptions
     );
+    console.log(response);
 
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);
@@ -186,7 +190,7 @@ const getAllServices = async (token) => {
     throw error;
   }
 };
-const createOrder = async (formData, token) => {
+const createOrder = async (data, token) => {
   try {
     const requestOptions = {
       method: "POST",
@@ -194,11 +198,11 @@ const createOrder = async (formData, token) => {
         "Content-Type": "application/json",
         "x-access-token": token,
       },
-      body: JSON.stringify(formData), // Ensure the data object matches backend expectations
+      body: JSON.stringify(data), // Ensure the data object matches backend expectations
     };
 
     const response = await fetch(`${api_url}/api/order`, requestOptions);
-     console.log(response)
+
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);
     }

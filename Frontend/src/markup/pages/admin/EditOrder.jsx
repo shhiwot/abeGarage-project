@@ -4,7 +4,7 @@ import React from "react";
 // Import the AdminMenu component
 import AdminMenu from "../../components/Admin/AdminMenu/AdminMenu";
 import EditEmployee from "../../components/Admin/EmployeeEditForm/EmployeeEditForm";
-import Order from "../../components/Admin/AddNewOrder/EditOrder/OrderEdit";
+import Order from "../../components/Admin/AddNewOrder/EditOrder/PreOrderService1";
 function EditOrder(props) {
   return (
     <div>

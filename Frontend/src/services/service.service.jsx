@@ -109,7 +109,8 @@ const getServiceById = async (token, id) => {
   }
 };
 // Function to update employee data
-const updateService = async (token, formData, id) => {
+const updateService = async (token, formData) => {
+  console.log(formData);
   const requestOptions = {
     method: "PUT",
     headers: {
@@ -121,16 +122,17 @@ const updateService = async (token, formData, id) => {
   console.log("FormData being sent:", formData);
   try {
     const response = await fetch(
-      `${api_url}/api/service/${id}`,
+      `${api_url}/api/service/`,
       requestOptions
     );
-    if (!response.ok) {
-      const errorText = await response.text();
-      throw new Error(
-        `HTTP error! Status: ${response.status}, Details: ${errorText}`
-      );
-    }
-    if (response.status === 200) {
+    // if (!response.ok) {
+    //   const errorText = await response.text();
+    //   throw new Error(
+    //     `HTTP error! Status: ${response.status}, Details: ${errorText}`
+    //   );
+    // }
+    if (response) {
+console.log(response);
       return response; // Return the data if the update was successful
     } else {
       throw new Error(

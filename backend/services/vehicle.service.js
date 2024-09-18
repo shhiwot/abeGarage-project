@@ -1,15 +1,13 @@
 //import connection
 const conn = require("../config/db.config");
 const { v4: uuidv4 } = require("uuid");
-
-
-
 async function createVehicle(vehicle) {
-  const customer_id = req.params.customerId;
   const id = uuidv4().toUpperCase();
   vehicle.id = id;
+
   try {
     console.log("Creating vehicle with:", vehicle);
+
     // Validate presence of required fields
     const requiredFields = [
       "customer_id",
@@ -227,8 +225,8 @@ module.exports = {
   getVehicleById,
   doesVehicleExist,
   updateVehicle,
-  //deleteVehicle,
+  
   deleteVehicleByOrderId,
 
-  // fetchVehicleById
+  
 };

@@ -107,12 +107,7 @@ async function getEmployeeFromDb(id) {
 
     console.log(`Query result: ${JSON.stringify(rows)}`);
 
-    // if (!Array.isArray(rows) || rows.length === 0) {
-    //   return { status: 404, message: "Employee not found" };
-    // }
-
-    // const employeeData = rows[0];
-    // console.log(`Employee data: ${JSON.stringify(employeeData)}`);
+    
 
     return { status: 200, data:rows };
   } catch (error) {

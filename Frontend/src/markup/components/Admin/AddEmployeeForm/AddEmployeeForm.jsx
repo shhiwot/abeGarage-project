@@ -219,6 +219,7 @@ function AddEmployeeForm(props) {
                         className="theme-btn btn-style-one"
                         type="submit"
                         data-loading-text="Please wait..."
+                        style={{ width: "77%" }}
                       >
                         <span>Add employee</span>
                       </button>

@@ -513,7 +513,7 @@ async function getOrdersByCustomerId(customer_id) {
     o.order_id,
     oi.order_total_price,
     CASE 
-        WHEN oi.additional_requests_completed = 1 THEN 'Completed'
+        WHEN o.active_order = 1 THEN 'Completed'
         ELSE 'Not Completed'
     END AS order_status,
     o.order_date
@@ -521,6 +521,7 @@ FROM orders o
 LEFT JOIN order_info oi ON o.order_id = oi.order_id
 WHERE o.customer_id = ?
 ORDER BY o.order_id DESC;`;
+
 
   try {
     const rows = await conn.query(query, [customer_id]);

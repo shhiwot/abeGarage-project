@@ -111,6 +111,7 @@ function AddCustomerForm() {
                         value={customer_email}
                         onChange={(e) => setEmail(e.target.value)}
                         required
+                        style={{ width: "77%" }}
                       />
                       {emailError && (
                         <div className="validation-error" role="alert">
@@ -128,6 +129,7 @@ function AddCustomerForm() {
                         value={customer_first_name}
                         onChange={(e) => setFirstName(e.target.value)}
                         required
+                        style={{ width: "77%" }}
                       />
                     </div>
 
@@ -140,6 +142,7 @@ function AddCustomerForm() {
                         value={customer_last_name}
                         onChange={(e) => setLastName(e.target.value)}
                         required
+                        style={{ width: "77%" }}
                       />
                     </div>
 
@@ -152,6 +155,7 @@ function AddCustomerForm() {
                         value={customer_phone_number}
                         onChange={(e) => setPhoneNumber(e.target.value)}
                         required
+                        style={{ width: "77%" }}
                       />
                     </div>
 
@@ -161,6 +165,7 @@ function AddCustomerForm() {
                         className="theme-btn btn-style-one"
                         type="submit"
                         data-loading-text="Please wait..."
+                        style={{ width: "77%" }}
                       >
                         <span>
                           {spin ? (

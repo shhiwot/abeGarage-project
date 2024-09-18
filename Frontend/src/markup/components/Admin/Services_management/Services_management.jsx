@@ -479,12 +479,6 @@ import ConfirmationModal from "./ConfirmationModal";
 
 // export default Services_management;
 
-
-
-
-
-
-
 function Services_management(props) {
   const [services, setServices] = useState([]);
   const [service_name, setService_name] = useState("");
@@ -666,7 +660,7 @@ function Services_management(props) {
                     <FaEdit
                       className="icon edit-icon"
                       size={14}
-                      style={{ color: "red" }}
+                      style={{ color: "blue" }}
                     />
                   </button>
                   <button onClick={() => handleDelete(service.id)}>

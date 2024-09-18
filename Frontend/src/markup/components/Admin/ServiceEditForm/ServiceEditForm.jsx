@@ -24,8 +24,10 @@ const ServiceEditForm = () => {
           );
           console.log(result);
           setFormData({
+            id: id || "",
             service_name: result.service_name || "",
             service_description: result.service_description || "",
+            service_id: result.service_id || "",
           });
         }
       } catch (error) {
@@ -59,8 +61,7 @@ const ServiceEditForm = () => {
 
         const result = await serviceService.updateService(
           employee.employee_token,
-          formData,
-          id
+          formData
         );
         if (result.status === 200) {
           navigate(`/admin/services`);

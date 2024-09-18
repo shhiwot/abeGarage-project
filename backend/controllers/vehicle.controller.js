@@ -3,7 +3,6 @@ const vehicleService = require("../services/vehicle.service");
 async function createVehicle(req, res, next) {
   try {
     const vehicle = await vehicleService.createVehicle(req.body);
-    console.log(req.body);
     if (vehicle) {
       res.status(201).json({
         message: "Vehicle created successfully",

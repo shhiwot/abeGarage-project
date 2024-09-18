@@ -1,3 +1,4 @@
+
 .contact-section .external_container .contact-title h2 {
   padding:5% 8%;
   font-size: 30px;
@@ -17,7 +18,7 @@ select.custom-select-box {
   color: #fff;
 }
 .success-message{
-  color: red;
+  color: green;
   font-size: 16px;
   padding-bottom: 20px;
 }

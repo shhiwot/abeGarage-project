@@ -209,17 +209,17 @@ function Services() {
             <div className="inner-box hvr-float-shadow">
               <h2>{selectedService.title}</h2>
               <p>{selectedService.description}</p>
-              <h4>Service List</h4>
+              {/* <h4>Service List</h4>
               {selectedService.servicesList && (
                 <ul className="service-list">
-                  {selectedService.servicesList.map((item, index) => (
+                  {selectedService?.servicesList.map((item, index) => (
                     <li key={index}>
-                      <strong>{item.name}</strong>:{" "}
-                      <span>{item.description}</span>
+                      <strong>{item?.name}</strong>:{" "}
+                      <span>{item?.description}</span>
                     </li>
                   ))}
                 </ul>
-              )}
+              )} */}
               <div className="mt-3">
                 <a
                   href="#"

@@ -33,24 +33,25 @@ import Footer from "./markup/components/Footer/Footer";
 import AdminDashboard from "./markup/pages/admin/AdminDashboard.jsx";
 import Employees from "./markup/pages/admin/Employees.jsx";
 import EditEmployee from "./markup/pages/admin/EditEmployeePege.jsx";
-import AboutUsPage from "./markup/pages/AboutPage/AboutUsPeg.jsx";
+import AboutusPeg from "./markup/pages/AboutPage/AboutUsPeg.jsx";
 import Services from "./markup/pages/Services.jsx";
 import Services_page from "./markup/pages/admin/Services_page.jsx";
-import EditServicePage from "./markup/pages/admin/EditServicepage.jsx";
+import EditServicepage from "./markup/pages/admin/EditServicepage.jsx";
 // About Customer Management Start
 import AddCustomer from "./markup/pages/admin/AddCustomer.jsx";
 import Customers from "./markup/pages/admin/Customers.jsx";
 import EditCustomer from "./markup/pages/admin/EditCustomer.jsx";
 
 import CreateNewOrder from "./markup/pages/admin/CreateNewOrder.jsx";
-import CustomerProfile from "./markup/components/Admin/CustomerProfile/CustomerProfile.jsx";
-import VehicleDetail  from "./markup/pages/admin/VehicelDetailPeg.jsx";
+import CustomerOrderProfile from "./markup/pages/admin/OrderCustomerProfile.jsx";
+import VechelDetail from "./markup/pages/admin/VehicelDetailPeg.jsx";
 import CustomerOrder from "./markup/components/Admin/AddNewOrder/CoustmerOrder/CoustmerOrder.jsx";
 import CustomerOrderDetail from "./markup/pages/order/AddNeworder/CoustmerOrderDetail.jsx";
 import Order from "./markup/pages/order/Order.jsx";
 import Edit from "./markup/components/Admin/AddNewOrder/EditOrder/EditVechel.jsx";
 import EditOrder from "../src/markup/pages//admin/EditOrder.jsx";
 import EditVehicle from "./markup/pages/admin/EditVheicle.jsx";
+import CustomerProfile from "./markup/components/Admin/CustomerProfile/CustomerProfile.jsx";
 // About Customer Management End
 
 function App() {
@@ -60,7 +61,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/Contact" element={<Contact />} />
-        <Route path="/about" element={<AboutUsPage />} />
+        <Route path="/about" element={<AboutusPeg />} />
         <Route path="/services" element={<Services />} />
         <Route path="/login" element={<Login />} />
         <Route path="/unauthorized" element={<Unauthorized />} />
@@ -111,7 +112,7 @@ function App() {
           path="/admin/service/edit/:id"
           element={
             <PrivateAuthRoute roles={[2, 3]}>
-              <EditServicePage />
+              <EditServicepage />
             </PrivateAuthRoute>
           }
         />
@@ -161,7 +162,7 @@ function App() {
           path="/admin/customer/order/:id"
           element={
             <PrivateAuthRoute roles={[2, 3]}>
-              <CustomerProfile />
+              <CustomerOrderProfile />
             </PrivateAuthRoute>
           }
         />
@@ -169,7 +170,7 @@ function App() {
           path="/admin/customer/vehicle/:id"
           element={
             <PrivateAuthRoute roles={[2, 3]}>
-              <VehicleDetail />
+              <VechelDetail />
             </PrivateAuthRoute>
           }
         />
@@ -208,6 +209,15 @@ function App() {
         />
         {/* order page end */}
         {/* ************************************************************** */}
+
+        <Route
+          path="/admin/customer-profile/:id"
+          element={
+            <PrivateAuthRoute roles={[2, 3]}>
+              <CustomerProfile />
+            </PrivateAuthRoute>
+          }
+        />
       </Routes>
       <Footer />
     </>

@@ -125,7 +125,9 @@ p {
   position: relative;
   padding-left: 40px; /* To give space for the line */
 }
-
+.error-message {
+  color: red;
+}
 .sidebar-with-line::before {
   content: "";
   position: absolute;
@@ -162,4 +164,19 @@ p {
 }
 .sidebar-with-line2 {
  padding-left: 40px;
+}
+
+.order_list{
+  width: 100%;
+  color: black;
+}
+
+.status-cell.status-completed {
+  background-color: green;
+  color: white;
+}
+
+.status-cell.status-in-progress {
+  background-color: yellow;
+  color: black;
 }
