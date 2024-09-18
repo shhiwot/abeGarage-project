@@ -1,4 +1,6 @@
 import React from 'react'
+import { Routes, Route } from 'react-router-dom';
+import Contact from '../Contact.jsx';
 import Introduction from './Introduction/Introduction';
 import WhyChooseUs from './WhyChooseUs/WhyChooseUs';
 import AdditionalServices from './AdditionalServices/AdditionalServices';
@@ -7,7 +9,7 @@ import MainBannerr from './LastBanner/MainBannerr';
 import MainBanner from "./MainBanner/MainBanner"
 import Experience from "./Experience/Experience"
 import "./style.css"
-const AboutusPeg = () => {
+const AboutUsPeg = () => {
   return (
     <div>
       <div className="App">
@@ -22,10 +24,13 @@ const AboutusPeg = () => {
         {/* <WhyChooseUs />
       <AdditionalServices /> */}
         <CallToAction />
+        <Routes>
+        <Route path="/Contact" element={<Contact />} />
+        </Routes>
         <MainBannerr />
       </div>
     </div>
   );
 }
 
-export default AboutusPeg
+export default AboutUsPeg

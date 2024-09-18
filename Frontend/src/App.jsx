@@ -7,6 +7,7 @@ import Home from "./markup/pages/Home";
 // Import the contactus components
 
 import Contact from "./markup/pages/Contact";
+// import AboutUs from "./markup/pages/AboutUs.jsx";
 // Import the login components
 import Login from "./markup/pages/Login";
 // My task Start ******************
@@ -32,7 +33,7 @@ import Footer from "./markup/components/Footer/Footer";
 import AdminDashboard from "./markup/pages/admin/AdminDashboard.jsx";
 import Employees from "./markup/pages/admin/Employees.jsx";
 import EditEmployee from "./markup/pages/admin/EditEmployeePege.jsx";
-import AboutusPeg from "./markup/pages/AboutPage/AboutUsPeg.jsx";
+import AboutUsPeg from "./markup/pages/AboutPage/AboutUsPeg.jsx";
 import Services from "./markup/pages/Services.jsx";
 import Services_page from "./markup/pages/admin/Services_page.jsx";
 import EditServicepage from "./markup/pages/admin/EditServicepage.jsx";
@@ -44,7 +45,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/Contact" element={<Contact />} />
-        <Route path="/about" element={<AboutusPeg />} />
+        <Route path="/about" element={<AboutUsPeg  />} />
         <Route path="/services" element={<Services />} />
         <Route path="/login" element={<Login />} />
         <Route path="/unauthorized" element={<Unauthorized />} />
