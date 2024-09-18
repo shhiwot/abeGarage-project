@@ -100,6 +100,7 @@ function LoginForm() {
                         onChange={(event) => setEmail(event.target.value)}
                         placeholder="Email"
                       />
+                      <span className="lineLogin"></span>
                       {emailError && (
                         <div className="validation-error" role="alert">
                           {emailError}
@@ -115,6 +116,7 @@ function LoginForm() {
                         onChange={(event) => setPassword(event.target.value)}
                         placeholder="Password"
                       />
+                      <span className="lineLogin"></span>
                       {passwordError && (
                         <div className="validation-error" role="alert">
                           {passwordError}

@@ -1,0 +1,143 @@
+/* Service_management */
+.main-content {
+  flex: 1;
+  background: #f5f4f7
+    url(.../../../../../../assets/template_assets/images/resource/pattern.png);
+  /* template_assets//images//resource/pattern.png */
+  padding: 20px 40px;
+}
+.row .services-right-side > * {
+  padding-right: calc(var(--bs-gutter-x) * 2) !important;
+  padding-left: calc(var(--bs-gutter-x) * 2) !important;
+}
+.header {
+  display: flex;
+  align-items: baseline;
+}
+.header h4 {
+  font-weight: 600;
+}
+.header-description {
+  font-size: 17px;
+  color: #797979;
+}
+.service-item h5 {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 1200;
+  color: #00074e;
+}
+.icon {
+  display: flex;
+  align-items: center;
+}
+.service-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.service-actions p {
+  font-size: 14px;
+  color: #474747;
+}
+.header-line {
+  border: 0;
+  height: 2px;
+  background-color: red;
+  width: 150px;
+  margin-top: 10px;
+}
+.header2-line {
+  border: 0;
+  height: 2px;
+  background-color: red;
+  width: 50px;
+  margin-top: 10px;
+}
+.employee-table-container {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.employee-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.employee-table th,
+.employee-table td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.employee-table th {
+  background-color: #ecf0f1;
+}
+
+.icon {
+  cursor: pointer;
+  margin-right: 10px;
+  color: #2980b9;
+}
+
+.edit-icon:hover {
+  color: #27ae60;
+}
+
+.delete-icon:hover {
+  color: #c0392b;
+}
+.add-service-form {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+}
+
+.add-service-form h5 {
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.add-service-form input,
+.add-service-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0px 5px 2px rgba(0, 0, 0, 0.1) !important;
+}
+
+.add-service-form button {
+  background-color: #e74c3c;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.add-service-form button:hover {
+  background-color: #c0392b;
+}
+
+input[type="text"],
+textarea {
+  font-size: 15px; /* Adjust this value to your preferred font size */
+  padding: 10px; /* Optional: Adjust margin if needed for spacing between elements */
+  width: 100%; /* Optional: Make inputs and textareas full width */
+}
+
+/* Specific styles for textarea if needed */
+textarea {
+  resize: none; /* Prevents resizing by the user */
+  width: 100%; /* Adjust width to your preferred size */
+  height: 40px; /* Adjust height to your preferred size */
+  padding-top: 20px; /* Optional: Padding for better appearance */
+  margin-bottom: 0px; /* Optional: Space below the textarea */
+}

@@ -31,9 +31,10 @@ body {
 
 /* Status Styles */
 .statusInProgress {
-  background-color: yellow; /* Yellow for in-progress */
+  background-color:#FFC108; /* Yellow for in-progress */
   color: black;
-  padding: 3px;
+  padding: 7px;
+  font-weight:900;
   border-radius: 10px;
 }
 

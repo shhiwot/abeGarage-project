@@ -24,7 +24,6 @@ const Table = () => {
   const [successMessage, setSuccessMessage] = useState("");
   const { employee } = useAuth();
   const navigate = useNavigate();
-
   useEffect(() => {
     const fetchOrdersAndDetails = async () => {
       try {
@@ -103,7 +102,7 @@ const Table = () => {
   return (
     <section className="contact-section" style={{ paddingTop: "0" }}>
       <div className="contact-title" style={{ marginBottom: "50px" }}>
-        <h2>Orders</h2>
+        <h2 className="ml-5">Orders</h2>
       </div>
       {successMessage && (
         <div
@@ -121,90 +120,100 @@ const Table = () => {
           Error: {error}
         </div>
       )}
-      <table className={styles.customTable}>
-        <thead>
-          <tr>
-            <th>Order Id</th>
-            <th>Customer</th>
-            <th>Vehicle</th>
-            <th>Order Date</th>
-            <th>Received By</th>
-            <th>Order Status</th>
-            <th>View/Edit</th>
-          </tr>
-        </thead>
-        <tbody>
-          {orders.map((ord) => (
-            <tr key={ord.order_id}>
-              <td data-label="Order Id">{ord.order_id}</td>
-              <td data-label="Customer">
-                {customers[ord.customer_id] ? (
-                  <>
-                    <div className="fw-bold" style={{ color: "#08194A" }}>
-                      {customers[ord.customer_id].customer_first_name}{" "}
-                      {customers[ord.customer_id].customer_last_name}
-                    </div>
-                    <div>{customers[ord.customer_id].customer_email}</div>
-                    <div>
-                      {customers[ord.customer_id].customer_phone_number}
-                    </div>
-                  </>
-                ) : (
-                  "Loading..."
-                )}
-              </td>
-              <td data-label="Vehicle">
-                {vehicles[ord.vehicle_id] ? (
-                  <>
-                    <div className="fw-bold" style={{ color: "#08194A" }}>
-                      {vehicles[ord.vehicle_id].vehicle_model}
-                    </div>
-                    <div>{vehicles[ord.vehicle_id].vehicle_year}</div>
-                    <div>{vehicles[ord.vehicle_id].vehicle_tag}</div>
-                  </>
-                ) : (
-                  "Loading..."
-                )}
-              </td>
-              <td data-label="Order Date">
-                {format(new Date(ord.order_date), "M-d-yyyy")}
-              </td>
-              <td data-label="Received By">
-                {employees[ord.employee_id]
-                  ? `${employees[ord.employee_id]?.employee_first_name} ${
-                      employees[ord.employee_id].employee_last_name
-                    }`
-                  : "Loading..."}
-              </td>
-              <td data-label="Order Status">
-                <span
-                  className={
-                    ord.order_completed === 0
-                      ? styles.statusInProgress
-                      : styles.statusCompleted
-                  }
-                >
-                  {ord.order_completed === 0 ? "In Progress" : "Completed"}
-                </span>
-              </td>
-              <td data-label="Actions">
-                <button
-                  onClick={() => handleView(ord.id)}
-                  className={styles.viewButton}
-                >
-                  <FaExternalLinkAlt color="#06175B" />
-                </button>
-                <button
-                  onClick={() => handleEdit(ord.id)}
-                  className={styles.editButton}
-                >
-                  <FaEdit color="#06175B" />
-                </button>
-              </td>
+      <div style={{ width: "90%", margin: "0 auto" }}>
+        <table className={styles.customTable}>
+          <thead>
+            <tr>
+              <th>Order Id</th>
+              <th>Customer</th>
+              <th>Vehicle</th>
+              <th>Order Date</th>
+              <th>Received By</th>
+              <th>Order Status</th>
+              <th>View/Edit</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {orders.map((ord) => (
+              <tr key={ord.order_id}>
+                <td
+                  data-label="Order Id"
+                  style={{ textAlign: "center", verticalAlign: "middle" }}
+                >
+                  {ord.order_id}
+                </td>
+                <td data-label="Customer">
+                  {customers[ord.customer_id] ? (
+                    <>
+                      <div className="fw-bold" style={{ color: "#08194A" }}>
+                        {customers[ord.customer_id].customer_first_name}{" "}
+                        {customers[ord.customer_id].customer_last_name}
+                      </div>
+                      <div>{customers[ord.customer_id].customer_email}</div>
+                      <div>
+                        {customers[ord.customer_id].customer_phone_number}
+                      </div>
+                    </>
+                  ) : (
+                    "Loading..."
+                  )}
+                </td>
+                <td data-label="Vehicle">
+                  {vehicles[ord.vehicle_id] ? (
+                    <>
+                      <div className="fw-bold" style={{ color: "#08194A" }}>
+                        {vehicles[ord.vehicle_id].vehicle_model}
+                      </div>
+                      <div>{vehicles[ord.vehicle_id].vehicle_year}</div>
+                      <div>{vehicles[ord.vehicle_id].vehicle_tag}</div>
+                    </>
+                  ) : (
+                    "Loading..."
+                  )}
+                </td>
+                <td data-label="Order Date">
+                  {format(new Date(ord.order_date), "M-d-yyyy")}
+                </td>
+                <td data-label="Received By">
+                  {employees[ord.employee_id]
+                    ? `${employees[ord.employee_id]?.employee_first_name} ${
+                        employees[ord.employee_id].employee_last_name
+                      }`
+                    : "Loading..."}
+                </td>
+                <td
+                  data-label="Order Status"
+                  style={{ textAlign: "center", verticalAlign: "middle" }}
+                >
+                  <span
+                    className={
+                      ord.order_completed === 0
+                        ? styles.statusInProgress
+                        : styles.statusCompleted
+                    }
+                  >
+                    {ord.order_completed === 0 ? "In Progress" : "Completed"}
+                  </span>
+                </td>
+                <td data-label="Actions">
+                  <FaExternalLinkAlt
+                    onClick={() => handleView(ord.id)}
+                    className={`${styles.viewButton} ml-4`}
+                    color="#06175B"
+                    size={18}
+                  />
+                  <FaEdit
+                    className={`${styles.editButton} ml-2`}
+                    onClick={() => handleEdit(ord.id)}
+                    color="#06175B"
+                    size={20}
+                  />
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </section>
   );
 };

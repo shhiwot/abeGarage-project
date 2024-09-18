@@ -4,7 +4,7 @@ const conn = require("../config/db.config");
 const { pool } = require("../config/db.config");
 //import uuid
 const { v4: uuidv4 } = require("uuid"); // Use uuid for unique IDs
-const { getCustomerInfo } = require("../controllers/order.controller");
+// const { getCustomerInfo } = require("../controllers/order.controller");
 const { query } = require("express");
 
 async function createOrder(order) {

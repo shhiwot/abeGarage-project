@@ -60,9 +60,18 @@ export default function OrderPerCustomer({
         <table className="dropdown-table">
           <thead>
             <tr>
-              <th className="bold-on-hover">Order ID</th>
+              <th
+                className="bold-on-hover"
+                style={{ textAlign: "center"}}
+              >
+                Order ID
+              </th>
               <th className="bold-on-hover">Total Price</th>
-              <th className="bold-on-hover">Status</th>
+              <th
+                className="bold-on-hover"
+              >
+                Status
+              </th>
               <th className="bold-on-hover">Order Date</th>
             </tr>
           </thead>
@@ -72,18 +81,29 @@ export default function OrderPerCustomer({
                 key={order.order_id}
                 className={index % 2 === 0 ? "even-row" : "odd-row"}
               >
-                <td data-label="Order ID">{order.order_id}</td>
+                <td
+                  data-label="Order ID"
+                  style={{ textAlign: "center", verticalAlign: "middle" }}
+                >
+                  {order.order_id}
+                </td>
                 <td data-label="Total Price">${order.order_total_price}</td>
-                <td data-label="Status">
+                <td
+                  data-label="Status"
+                  style={{ textAlign: "center", verticalAlign: "middle" }}
+                >
                   <p
                     style={{
                       backgroundColor:
-                        order.order_status === "Completed" ? "green" : "yellow",
+                        order.order_status === "Completed"
+                          ? "green"
+                          : "#FFC108",
                       color:
                         order.order_status === "Completed" ? "white" : "black",
-                      padding: "2px 2px",
-                      borderRadius: "4px",
-                      width: "60%",
+                      padding: "4px",
+                      fontSize: "clamp(7px,1.2vw,12px)",
+                      borderRadius: "12px",
+                      width: "70%",
                     }}
                   >
                     {order.order_status === "Completed"

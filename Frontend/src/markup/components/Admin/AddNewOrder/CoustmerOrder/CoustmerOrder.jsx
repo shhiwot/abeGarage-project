@@ -18,6 +18,19 @@ import "./style.css";
 import Modal from "./Modal"; // Import the Modal component
 import { toast, ToastContainer } from "react-toastify"; // Import toast and ToastContainer
 import "react-toastify/dist/ReactToastify.css"; // Import toast styles
+const styles = {
+  strong: {
+    fontSize: "1rem",
+    color: "#000019",
+    fontWeight: 600,
+  },
+  span: {
+    color: "#858585",
+  },
+  h6: {
+    margin: "5px 0",
+  },
+};
 
 export default function VehicleDetail() {
   const { id } = useParams();
@@ -153,13 +166,24 @@ const handleEdit = (id) => {
             <h2>
               {info.customer_first_name} {info.customer_last_name}
             </h2>
-            <h6>Email: {info.customer_email}</h6>
-            <h6>Phone Number: {info.customer_phone_number}</h6>
-            <h6>
-              Active Customer: {info.active_customer_status ? "Yes" : "No"}
+            <h6 style={styles.h6}>
+              <strong style={styles.strong}>Email :</strong>
+              <span style={styles.span}>{info.customer_email}</span>{" "}
+            </h6>
+            <h6 style={styles.h6}>
+              <strong style={styles.strong}>Phone Number:</strong>
+              <span>
+                {" "}
+                style={styles.span}
+                {info.customer_phone_number}
+              </span>
             </h6>
             <h6>
-              Edit customer info:
+              <strong>Active Customer:</strong>
+              <span>{info.active_customer_status ? "Yes" : "No"}</span>
+            </h6>
+            <h6 style={styles.h6}>
+              <strong style={styles.strong}>Edit customer info:</strong>
               <FaEdit
                 color="red"
                 size={25}
@@ -180,7 +204,7 @@ const handleEdit = (id) => {
             <h6>Vehicle Year: {info.vehicle_year}</h6>
             <h6>Vehicle Mileage: {info.vehicle_mileage}</h6>
             <h6>Vehicle Serial: {info.vehicle_serial}</h6>
-            <h6>
+            <h6 style={styles.h6}>
               Edit vehicle info:
               <FaEdit
                 color="red"

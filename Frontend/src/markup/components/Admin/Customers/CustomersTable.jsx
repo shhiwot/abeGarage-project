@@ -206,18 +206,18 @@ const Table = () => {
                     <td data-label="Active">
                       {customer.active_customer_status ? "Yes" : "No"}
                     </td>
-                    <td data-label="Edit">
-                      <button
-                        onClick={() => handleEdit(customer.id)}
-                        className={styles.editButton}
-                      >
-                        <FaEdit />
+                    <td data-label="Edit" style={{display:"flex"}}>
+                      <button>
+                        <FaEdit
+                          onClick={() => handleEdit(customer.id)}
+                         style={{color:"red"}}
+                        />
                       </button>
-                      <button
-                        onClick={() => handleProfile(customer.id)}
-                        className={styles.viewButton}
-                      >
-                        <FaArrowUpRightFromSquare />
+                      <button>
+                        <FaArrowUpRightFromSquare
+                          onClick={() => handleProfile(customer.id)}
+                          className={styles.viewButton}
+                        />
                       </button>
                     </td>
                   </tr>

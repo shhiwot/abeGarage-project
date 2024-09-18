@@ -88,7 +88,7 @@
 .theme-btn.btn-style-one {
   border-radius: 8px;
 }
-.line {
+.lineLogin {
   height: 3px;
   width: 0px;
   border-radius: 5px;
@@ -96,10 +96,10 @@
   display: block;
   transition: 0.9s width ease-in-out;
   position: relative;
-  top: -1px;
+  top: -17px;
   box-sizing: border-box; /* Include padding and border in element's total width and height */
 }
-.form-group input:focus + .line {
+.form-group input:focus + .lineLogin {
   width: 100%;
   background-color: #08194a;
   margin: 0px;

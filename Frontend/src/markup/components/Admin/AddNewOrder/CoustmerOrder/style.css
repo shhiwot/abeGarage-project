@@ -141,10 +141,17 @@
 
   .info h2 {
     font-size: 1.5rem; /* Adjust font size for headings */
+    font-weight: 600;
+    color: #001558;
   }
 
-  .info h6 {
-    font-size: 0.9rem; /* Adjust font size for other text */
+  .info h6 >strong {
+    font-size: 1rem; /* Adjust font size for other text */
+    color:#000019;
+    font-weight: 600;
+  }
+  .info > span{
+   color:#858585 ;
   }
   .statusInCompleted{
     border: 1px solid white !important; 

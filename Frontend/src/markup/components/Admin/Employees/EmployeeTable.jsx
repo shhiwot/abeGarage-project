@@ -262,19 +262,15 @@ const Table = () => {
               <td>{emp.employee_phone}</td>
               <td>{format(new Date(emp.added_date), "M-d-yyyy")}</td>
               <td>{emp.company_role_name}</td>
-              <td>
-                <button
+              <td style={{ display: "flex" }}>
+                <FaEdit
                   onClick={() => handleEdit(emp.employee_id)}
-                  className={styles.editButton}
-                >
-                  <FaEdit />
-                </button>
-                <button
+                  className={`${styles.editButton} ml-3 mt-1`}
+                />
+                <FaTrash
                   onClick={() => handleDelete(emp.employee_id)}
-                  className={styles.deleteButton}
-                >
-                  <FaTrash />
-                </button>
+                  className={`${styles.deleteButton} ml-2 mt-1`}
+                />
               </td>
             </tr>
           ))}

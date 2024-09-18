@@ -150,12 +150,7 @@ function Header(props) {
                 aria-labelledby="offcanvasNavbarLabel"
                 placement="end"
               >
-                <Offcanvas.Header closeButton>
-                  <Offcanvas.Title id="offcanvasNavbarLabel">
-                    Navigation
-                  </Offcanvas.Title>
-                </Offcanvas.Header>
-                <Offcanvas.Body>
+                <Offcanvas.Body className="mt-5">
                   <Nav className="justify-content-end flex-grow-1 pe-3 pt-5">
                     <Link to="/" style={linkStyle}>
                       Home
