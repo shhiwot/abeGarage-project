@@ -133,18 +133,15 @@ export const getVehicleInfo = async (token, vehicleIds) => {
 export const getEmployeeInfo = async (token, orderIds) => {
   console.log(orderIds); // This should be an array of order IDs
   try {
-    const response = await fetch(
-      `http://localhost:5000/api/order/get-empolyee-info/`,
-      {
-        // Make sure the URL matches your backend endpoint
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "x-access-token": token,
-        },
-        body: JSON.stringify({ order_ids: orderIds }), // Updated to send an array of order IDs
-      }
-    );
+    const response = await fetch(`${api_url}/api/order/get-empolyee-info/`, {
+      // Make sure the URL matches your backend endpoint
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "x-access-token": token,
+      },
+      body: JSON.stringify({ order_ids: orderIds }), // Updated to send an array of order IDs
+    });
 
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);
