@@ -28,7 +28,7 @@ function Services() {
       }
     };
     fetchServices(); // Call the function to fetch services
-  }, [employee]); 
+  }, [employee]);
   const servicesCategory = [
     {
       title: "Performance Upgrade",
@@ -55,24 +55,24 @@ function Services() {
       description:
         "Ensure smooth and efficient gear shifts with our comprehensive transmission services. Our skilled technicians specialize in transmission fluid changes, clutch replacements, and full transmission rebuilds to maintain your vehicle’s optimal performance.Learn more about the importance of regular transmission maintenance, explore our reliable services, and book an appointment for a smoother drive.",
       iconClass: "flaticon-gearbox",
-       servicesList: [
-         {
-           name:services[2]?.service_name ?? "Loading...",
-           description:services[2]?.service_description ?? "Loading...",
-         },
-         {
-           name:services[10]?.service_name ?? "Loading...",
-           description:services[10]?.service_description ?? "Loading...",
-         },
-         {
-           name:services[11]?.service_name ?? "Loading...",
-           description:services[11]?.service_description ?? "Loading...",
-         },
-         {
-           name:services[12]?.service_name ?? "Loading...",
-           description:services[12]?.service_description ?? "Loading...",
-         },
-       ],
+      servicesList: [
+        //    {
+        //      name:services[2]?.service_name ?? "Loading...",
+        //      description:services[2]?.service_description ?? "Loading...",
+        //    },
+        //    {
+        //      name:services[10]?.service_name ?? "Loading...",
+        //      description:services[10]?.service_description ?? "Loading...",
+        //    },
+        //    {
+        //      name:services[11]?.service_name ?? "Loading...",
+        //      description:services[11]?.service_description ?? "Loading...",
+        //    },
+        //    {
+        //      name:services[12]?.service_name ?? "Loading...",
+        //      description:services[12]?.service_description ?? "Loading...",
+        //    },
+      ],
     },
     {
       title: "Break Repair & Service",
@@ -209,7 +209,7 @@ function Services() {
             <div className="inner-box hvr-float-shadow">
               <h2>{selectedService.title}</h2>
               <p>{selectedService.description}</p>
-              {/* <h4>Service List</h4>
+              <h4>Service List</h4>
               {selectedService.servicesList && (
                 <ul className="service-list">
                   {selectedService?.servicesList.map((item, index) => (
@@ -219,7 +219,7 @@ function Services() {
                     </li>
                   ))}
                 </ul>
-              )} */}
+              )}
               <div className="mt-3">
                 <a
                   href="#"

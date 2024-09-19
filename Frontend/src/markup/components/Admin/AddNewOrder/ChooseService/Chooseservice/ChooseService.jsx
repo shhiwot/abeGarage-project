@@ -115,6 +115,7 @@ export default function ChooseService({ customerId, vehicleId, employee }) {
 
     try {
       const result = await createOrder(data, employee.employee_token);
+      console.log(result)     
       navigate(`/admin/order/${result.data}`); // Adjust navigation based on actual order ID if available
     } catch (err) {
       setError(err.message || "Failed to create order");
