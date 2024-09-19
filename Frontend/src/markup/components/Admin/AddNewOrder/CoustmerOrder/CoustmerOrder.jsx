@@ -172,7 +172,7 @@ const handleEdit = (id) => {
             </h6>
             <h6 style={styles.h6}>
               <strong style={styles.strong}>Phone Number:</strong>
-              <span style={styles.span}> {info.customer_phone_number}</span>
+              <span style={styles.span}>{info.customer_phone_number}</span>
             </h6>
             <h6>
               <strong>Active Customer:</strong>
