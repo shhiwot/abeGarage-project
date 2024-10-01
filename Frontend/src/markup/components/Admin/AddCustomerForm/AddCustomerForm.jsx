@@ -7,7 +7,7 @@ import { BeatLoader } from "react-spinners";
 import { useAuth } from "../../../../Contexts/AuthContext.jsx";
 // Importing the crypto module to generate random id
 import CryptoJS from "crypto-js";
-
+import "./AddCustomerFormCss.css";
 function AddCustomerForm() {
   // useStates
   const [customer_email, setEmail] = useState("");
@@ -64,7 +64,7 @@ function AddCustomerForm() {
       .createCustomer(formData, loggedInEmployeeToken)
       .then((response) => response)
       .then((data) => {
-        console.log(data)
+        console.log(data);
         if (data.error) {
           setServerMsg(data.error);
         } else {
@@ -103,7 +103,7 @@ function AddCustomerForm() {
                 <form onSubmit={handleSubmit}>
                   <div className="row clearfix">
                     {/* Email */}
-                    <div className="form-group col-md-12">
+                    <div className="form-group col-12">
                       <input
                         type="email"
                         name="employee_email"
@@ -111,7 +111,7 @@ function AddCustomerForm() {
                         value={customer_email}
                         onChange={(e) => setEmail(e.target.value)}
                         required
-                        style={{ width: "77%" }}
+                        // style={{ width: "77%" }}
                       />
                       {emailError && (
                         <div className="validation-error" role="alert">
@@ -121,7 +121,7 @@ function AddCustomerForm() {
                     </div>
 
                     {/* First Name */}
-                    <div className="form-group col-md-12">
+                    <div className="form-group col-12">
                       <input
                         type="text"
                         name="customer_first_name"
@@ -129,12 +129,12 @@ function AddCustomerForm() {
                         value={customer_first_name}
                         onChange={(e) => setFirstName(e.target.value)}
                         required
-                        style={{ width: "77%" }}
+                        // style={{ width: "77%" }}
                       />
                     </div>
 
                     {/* Last Name */}
-                    <div className="form-group col-md-12">
+                    <div className="form-group col-12">
                       <input
                         type="text"
                         name="customer_last_name"
@@ -142,12 +142,12 @@ function AddCustomerForm() {
                         value={customer_last_name}
                         onChange={(e) => setLastName(e.target.value)}
                         required
-                        style={{ width: "77%" }}
+                        // style={{ width: "77%" }}
                       />
                     </div>
 
                     {/* Phone Number */}
-                    <div className="form-group col-md-12">
+                    <div className="form-group col-12">
                       <input
                         type="text"
                         name="employee_phone"
@@ -155,17 +155,18 @@ function AddCustomerForm() {
                         value={customer_phone_number}
                         onChange={(e) => setPhoneNumber(e.target.value)}
                         required
-                        style={{ width: "77%" }}
+                        // style={{ width: "77%" }}
                       />
                     </div>
 
                     {/* Submit Button */}
-                    <div className="form-group col-md-12">
+                    <div className="form-group col-12">
                       <button
                         className="theme-btn btn-style-one"
                         type="submit"
                         data-loading-text="Please wait..."
-                        style={{ width: "77%" }}
+                        // style={{ width: "65%" }}
+                        style={{ width: "65%", height: "65%" }}
                       >
                         <span>
                           {spin ? (
@@ -202,4 +203,3 @@ function AddCustomerForm() {
 }
 
 export default AddCustomerForm;
-

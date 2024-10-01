@@ -130,3 +130,12 @@ select.custom-select-box {
   color: #fff;
 }
 
+@media (max-width: 430px) {
+    textarea,
+    input[type="email"],
+    select[name="employee_role"],
+    .employee_password {
+        width: 76% !important;
+    }
+}
+

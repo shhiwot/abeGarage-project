@@ -3,11 +3,10 @@ import { useParams, useNavigate } from "react-router-dom";
 import customerService from "../../../../services/customer.service.js";
 import { useAuth } from "../../../../Contexts/AuthContext.jsx";
 import { BeatLoader } from "react-spinners";
+import "./EditCustomer.css";
 
 function EditCustomer() {
-  // const { customer_hash } = useParams(); // Get customer hash from the URL params
-  // const { customer_id } = useParams(); // Get customer hash from the URL params
-  const { id } = useParams(); // Get customer hash from the URL params
+  const { id } = useParams(); // Get customer id from the URL params
   const { employee } = useAuth(); // Get authenticated employee token
   const navigate = useNavigate();
 
@@ -16,36 +15,33 @@ function EditCustomer() {
     customer_first_name: "",
     customer_last_name: "",
     customer_phone_number: "",
-    customer_id:"",
+    customer_id: "",
     customer_email: "", // Added customer email
-    active_customer_status: 0,
+    active_customer_status: false, // Default to false
   });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [spin, setSpinner] = useState(false);
   const [serverMsg, setServerMsg] = useState("");
 
-  // create a variable to hold the users token
+  // create a variable to hold the user's token
   let loggedInEmployeeToken = "";
 
-  // destructure the auth hook and get the token
+  // Destructure the auth hook and get the token
   if (employee && employee.employee_token) {
     loggedInEmployeeToken = employee.employee_token;
   }
 
+  // Fetch customer data
   useEffect(() => {
     const fetchCustomerData = async () => {
       try {
         if (employee && employee.employee_token) {
           const result = await customerService.getCustomerById(
-            // customer_hash,
-            // customer_id,
             id,
             loggedInEmployeeToken
           );
-          console.log(result);
-          const customerData = result
-          console.log(customerData);
+          const customerData = result;
 
           setFormData({
             customer_id: customerData.customer_id,
@@ -53,10 +49,12 @@ function EditCustomer() {
             customer_last_name: customerData.customer_last_name || "",
             customer_phone_number: customerData.customer_phone_number || "",
             customer_email: customerData.customer_email || "",
-            active_customer_status: customerData.active_customer_status || 0,
+            active_customer_status:
+              customerData.active_customer_status !== undefined
+                ? customerData.active_customer_status
+                : false,
           });
         }
-        console.log(formData)
       } catch (error) {
         setError(error.message);
       } finally {
@@ -65,8 +63,9 @@ function EditCustomer() {
     };
 
     fetchCustomerData();
-  }, [id]);
+  }, [id, employee, loggedInEmployeeToken]);
 
+  // Handle input change (for both text and checkbox)
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     setFormData((prevData) => ({
@@ -74,7 +73,8 @@ function EditCustomer() {
       [name]: type === "checkbox" ? checked : value,
     }));
   };
-  console.log(formData)
+
+  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -108,6 +108,7 @@ function EditCustomer() {
   if (error) {
     return <p>Error: {error}</p>;
   }
+
   return (
     <section className="contact-section">
       <div className="auto-container">
@@ -151,7 +152,7 @@ function EditCustomer() {
                     <div className="form-group col-md-12">
                       <input
                         type="text"
-                        name="customer_phone"
+                        name="customer_phone_number"
                         placeholder="Customer phone (555-555-5555)"
                         value={formData.customer_phone_number}
                         onChange={handleChange}
@@ -161,13 +162,15 @@ function EditCustomer() {
 
                     {/* Active Customer */}
                     <div className="form-group col-md-12">
-                      <h5>Active Customer</h5>
-                      <input
-                        type="checkbox"
-                        name="active_customer"
-                        checked={formData.active_customer_status}
-                        onChange={handleChange}
-                      />
+                      <label className="checkbox-label">
+                        <input
+                          type="checkbox"
+                          name="active_customer_status" // Update to match the state variable
+                          checked={formData.active_customer_status}
+                          onChange={handleChange}
+                        />
+                        is active customer
+                      </label>
                     </div>
 
                     {/* Submit Button */}
@@ -176,6 +179,8 @@ function EditCustomer() {
                         className="theme-btn btn-style-one"
                         type="submit"
                         data-loading-text="Please wait..."
+                        // style={{ width: "65%" }}
+                        style={{ width: "65%", height: "65%" }}
                       >
                         <span>
                           {spin ? (
