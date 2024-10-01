@@ -1,0 +1,44 @@
+/* Prevent horizontal overflow and ensure responsiveness */
+.contact-section, .inner-column {
+  width: 100%;
+  padding: 15px;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+/* Full width for form inputs and buttons */
+.form-group input, 
+.form-group button, 
+.theme-btn.btn-style-one {
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 15px;
+}
+
+/* Validation error styling */
+.validation-error {
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
+  width: 100%;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+@media (max-width: 430px) {
+    textarea, input[type="email"] {
+        width: 76% !important;
+    }
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+  .form-column, .auto-container {
+    padding: 0;
+    max-width: 100%;
+  }
+}

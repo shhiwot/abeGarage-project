@@ -131,8 +131,6 @@ const EditEmployee = () => {
                       />
                     </div>
 
-                    
-
                     <div className="form-group col-md-12">
                       <select
                         name="company_role_id"
@@ -163,6 +161,7 @@ const EditEmployee = () => {
                         className="theme-btn btn-style-one"
                         type="submit"
                         data-loading-text="Please wait..."
+                        style={{ width: "65%", height: "65%" }}
                       >
                         <span>Update</span>
                       </button>

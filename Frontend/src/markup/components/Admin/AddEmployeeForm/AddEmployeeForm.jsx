@@ -192,7 +192,7 @@ function AddEmployeeForm(props) {
                       </select>
                     </div>
                     <div className="form-group col-md-12">
-                      <div className="password-container">
+                      <div className="password-container employee_password">
                         <input
                           type={showPassword ? "text" : "password"}
                           name="employee_password"

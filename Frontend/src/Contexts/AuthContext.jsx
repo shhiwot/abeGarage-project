@@ -1,4 +1,3 @@
-
 // Import React and the Hooks we need here 
 import React, { useState, useEffect, useContext, createContext } from "react";
 // Import the Util function we created to handle the reading from the local storage 
