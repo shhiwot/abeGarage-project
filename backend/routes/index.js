@@ -27,5 +27,4 @@ router.use(orderRoutes)
 //import the vehicle routes
 const vehicleRoutes=require("./vehicle.routes")
 router.use(vehicleRoutes) 
-
 module.exports = router;

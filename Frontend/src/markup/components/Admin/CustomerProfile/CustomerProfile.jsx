@@ -12,8 +12,6 @@ import vehicleService from "../../../../services/vehicle.service";
 import { useAuth } from "../../../../Contexts/AuthContext";
 import OrderPerCustomer from "./OrderPerCoustmer";
 
-
-
 function CustomerProfile() {
   const [isFormVisible, setFormVisible] = useState(false);
   const { id } = useParams();
@@ -42,10 +40,10 @@ function CustomerProfile() {
 
   useEffect(() => {
     async function fetchCustomer() {
-      if (employee&&employee.employee_token) {
+      if (employee && employee.employee_token) {
         try {
           const data = await getCustomerById(id, loggedInEmployeeToken);
-          
+
           if (data) {
             setCustomer(data);
             setFormData((prevFormData) => ({
@@ -66,7 +64,7 @@ function CustomerProfile() {
         setError("Unauthorized. Please log in.");
         setLoading(false);
       }
-    console.log(formData.customer_id);
+      console.log(formData.customer_id);
     }
 
     fetchCustomer();
@@ -81,7 +79,7 @@ function CustomerProfile() {
             formData.customer_id,
             loggedInEmployeeToken
           );
-console.log(data);
+          console.log(data);
           if (data) {
             setVehicles(data.vehicles || []);
           } else {
@@ -96,7 +94,7 @@ console.log(data);
     }
 
     fetchVehicles();
-  }, [employee, customer,loggedInEmployeeToken]);
+  }, [employee, customer, loggedInEmployeeToken]);
 
   const toggleForm = () => setFormVisible(!isFormVisible);
 
@@ -113,68 +111,67 @@ console.log(data);
   //   return Object.keys(newError).length === 0;
   // };
 
- const handleSubmit = async (e) => {
-   e.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-   // Simple form validation
-   const requiredFields = [
-     "vehicle_year",
-     "vehicle_make",
-     "vehicle_model",
-     "vehicle_type",
-     "vehicle_mileage",
-     "vehicle_tag",
-     "vehicle_serial",
-     "vehicle_color",
-   ];
-   const isValid = requiredFields.every(
-     (field) => formData[field] && formData[field].trim() !== ""
-   );
+    // Simple form validation
+    const requiredFields = [
+      "vehicle_year",
+      "vehicle_make",
+      "vehicle_model",
+      "vehicle_type",
+      "vehicle_mileage",
+      "vehicle_tag",
+      "vehicle_serial",
+      "vehicle_color",
+    ];
+    const isValid = requiredFields.every(
+      (field) => formData[field] && formData[field].trim() !== ""
+    );
 
-   if (!isValid) {
-     setError("Please provide valid data for all fields.");
-     return;
-   }
+    if (!isValid) {
+      setError("Please provide valid data for all fields.");
+      return;
+    }
 
-   // Check if year, mileage, and serial are numbers
-   if (
-     isNaN(formData.vehicle_year) ||
-     isNaN(formData.vehicle_mileage) ||
-     isNaN(formData.vehicle_serial)
-   ) {
-     setError(
-       "Please enter valid numbers for year, mileage, and serial number."
-     );
-     return;
-   }
+    // Check if year, mileage, and serial are numbers
+    if (
+      isNaN(formData.vehicle_year) ||
+      isNaN(formData.vehicle_mileage) ||
+      isNaN(formData.vehicle_serial)
+    ) {
+      setError(
+        "Please enter valid numbers for year, mileage, and serial number."
+      );
+      return;
+    }
 
-   // Check if model, color, and type are strings
-   if (
-     typeof formData.vehicle_model !== "string" ||
-     typeof formData.vehicle_color !== "string" ||
-     typeof formData.vehicle_type !== "string"
-   ) {
-     setError("Please enter valid data for model, color, and type.");
-     return;
-   }
+    // Check if model, color, and type are strings
+    if (
+      typeof formData.vehicle_model !== "string" ||
+      typeof formData.vehicle_color !== "string" ||
+      typeof formData.vehicle_type !== "string"
+    ) {
+      setError("Please enter valid data for model, color, and type.");
+      return;
+    }
 
-   try {
-     const response = await vehicleService.createVehicle(
-       formData,
-       loggedInEmployeeToken
-     );
-     if (response) {
-       setSuccess("Vehicle added successfully!");
-       setTimeout(() => {
-         setSuccess(null); // Clear success message
-         navigate(`/admin/customers`);
-       }, 2000);
-     }
-   } catch (error) {
-     setError(error.message);
-   }
- };
-
+    try {
+      const response = await vehicleService.createVehicle(
+        formData,
+        loggedInEmployeeToken
+      );
+      if (response) {
+        setSuccess("Vehicle added successfully!");
+        setTimeout(() => {
+          setSuccess(null); // Clear success message
+          navigate(`/admin/customers`);
+        }, 2000);
+      }
+    } catch (error) {
+      setError(error.message);
+    }
+  };
 
   if (loading) return <p>Loading...</p>;
 
@@ -232,9 +229,7 @@ console.log(data);
                 {vehicleLoading ? (
                   <p>Loading vehicles...</p>
                 ) : error ? (
-                  <p className="error-message">
-                    {error}
-                  </p>
+                  <p className="error-message">{error}</p>
                 ) : vehicles.length > 0 ? (
                   <table className="dropdown-table">
                     <thead>
@@ -371,7 +366,7 @@ console.log(data);
                     placeholder="Vehicle color"
                   />
                   {success && <p className="success-message">{success}</p>}
-                  
+
                   <button type="submit" className="mt-3">
                     ADD VEHICLE
                   </button>

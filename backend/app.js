@@ -25,6 +25,15 @@ app.use(sanitize.middleware);
 
 // Add the routes to the application as middleware
 app.use(router);
+
+// My addition Start
+//  To check successful backend deployed start here*********
+app.get("/", (req, res) => {
+  res.status(200).json({
+    Message: "Successfully backend deployed!",
+  });
+}); 
+// My addition End
 // Start the webserver
 app.listen(port, () => {
   console.log(`Server running on port: ${port}`);

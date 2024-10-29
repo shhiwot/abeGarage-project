@@ -2,8 +2,7 @@ import React from "react";
 import vban1 from "../../assets/images/custom/misc/vban1.jpg";
 import vban2 from "../../assets/images/custom/misc/vban2.jpg";
 import { Link } from "react-router-dom";
-
-import "./home.css"
+import "./home.css";
 function Home() {
   return (
     <div className="homeWrapper">
@@ -14,17 +13,28 @@ function Home() {
           <h2>
             Tuneup Your Car <br /> to Next Level
           </h2>
+
           <div className="video-box">
             <div className="video-btn">
-              <Link
+              {/* <Link
                 to="https://www.youtube.com/watch?v=nfP5N9Yc72A&amp;t=28s"
                 className="overlay-link lightbox-image video-fancybox ripple"
+              >
+                <i className="flaticon-play"></i>
+              </Link> */}
+
+              <Link
+                to="https://youtu.be/PUkAIAIzA0I" // Direct link to the video
+                className="overlay-link lightbox-image video-fancybox ripple"
+                target="_blank" // Open the link in a new tab
+                rel="noopener noreferrer" // Security feature
               >
                 <i className="flaticon-play"></i>
               </Link>
             </div>
             <div className="text">
-              Watch intro video <br /> about us
+              Explore our offerings video
+              <br /> about us
             </div>
           </div>
         </div>
@@ -276,15 +286,24 @@ function Home() {
           </h2>
           <div className="video-box">
             <div className="video-btn">
-              <Link
+              {/* <Link
                 to="https://www.youtube.com/watch?v=nfP5N9Yc72A&amp;t=28s"
                 className="overlay-link lightbox-image video-fancybox ripple"
+              >
+                <i className="flaticon-play"></i>
+              </Link> */}
+              <Link
+                to="https://youtu.be/PUkAIAIzA0I" // Direct link to the video
+                className="overlay-link lightbox-image video-fancybox ripple"
+                target="_blank" // Open the link in a new tab
+                rel="noopener noreferrer" // Security feature
               >
                 <i className="flaticon-play"></i>
               </Link>
             </div>
             <div className="text">
-              Watch intro video <br /> about us
+              Explore our offerings video
+              <br /> about us
             </div>
           </div>
         </div>
