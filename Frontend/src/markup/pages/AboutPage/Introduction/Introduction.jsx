@@ -8,15 +8,22 @@ const Introduction = () => {
       <div className="content">
         <h2>We are highly skilled mechanics for your car repair</h2>
         <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Integer ac faucibus urna. Aliquam erat volutpat.
+          At our garage, we pride ourselves on our team of highly skilled
+          mechanics dedicated to providing exceptional car repair services. With
+          a focus on quality and customer satisfaction, we ensure your vehicle
+          receives the utmost care and attention.
         </p>
         <p>
-        Phasellus tincidunt enim ut risus bibendum, non pretium risus aliquet. Integer tincidunt convallis neque, ac scelerisque lacus vulputate et. Nulla facilisi. Duis dictum magna sit amet sapien malesuada, non dignissim nunc vestibulum.
+          Our dedication to excellence shines through our tailored services
+          designed to meet your unique needs. With advanced diagnostic tools, we
+          accurately identify and resolve any vehicle issues. Trust our
+          expertise to keep your car running smoothly and safely—your
+          satisfaction is our top priority, and we aim to exceed your
+          expectations with every visit.
         </p>
-
       </div>
       <div className="image">
-      <img src={introImage} alt="Mechanic working" />
+        <img src={introImage} alt="Mechanic working" />
       </div>
     </section>
   );

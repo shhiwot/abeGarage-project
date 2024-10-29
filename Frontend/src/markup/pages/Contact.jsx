@@ -1,8 +1,8 @@
 import React from "react";
-// import EmailIcon from "@mui/icons-material/Email";
 import { MdOutlineMailOutline } from "react-icons/md";
 import { LuMapPin } from "react-icons/lu";
 import { CiPhone } from "react-icons/ci";
+
 function Contact() {
   return (
     <>
@@ -13,7 +13,7 @@ function Contact() {
       <section className="why-choose-us">
         <div className="auto-container">
           <div className="row">
-            <div className="col-lg-6">
+            <div className="col-lg-7">
               <div className="sec-title style-two">
                 <div className="text"></div>
               </div>
@@ -21,11 +21,17 @@ function Contact() {
               <div className="work-img">
                 <iframe
                   className="contact"
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12757.42343889299!2d174.88380914777218!3d-36.929662702548335!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6d0d4b80ba5515b5%3A0x10c0cba902602964!2sAutoserv!5e0!3m2!1sen!2set!4v1725348905074!5m2!1sen!2set"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127590.063874522!2d38.65212029210835!3d9.039722089328936!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x164b85fccefe5fdf%3A0xf0673d57cf7ddf07!2sAddis%20Ababa%2C%20Ethiopia!5e0!3m2!1sen!2set!4v1725348905074!5m2!1sen!2set"
+                  width="100%"
+                  height="450"
+                  style={{ border: 0 }}
+                  allowFullScreen=""
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
                 ></iframe>
               </div>
             </div>
-            <div className="col-lg-6">
+            <div className="col-lg-5">
               <div className="sec-title style-two">
                 <br />
                 <br />
@@ -33,36 +39,32 @@ function Contact() {
                 <p>
                   completely synergize resource taxing relationships via premier
                   niche markets. professionally cultivate one-to-one customer
-                  servise
+                  service
                 </p>
-                <div className="col-md-7">
+                <div className="col-md-12">
                   <ul className="">
-                    
-                    
-                        <div className="Address">
-                          <LuMapPin className="mr-3" size={30} />
-                          <h3>Address:</h3>
-                        </div>
-                      
-                      (54b, Tailstoi Town 5238 MT la city, IA 52224)
-                  
+                    <div className="Address">
+                      <LuMapPin className="mr-3" size={30} />
+                      <h3>Address:</h3>
+                    </div>
+                    (Addis Ababa, Ethiopia)
                     <li>
-                      <span class="email">
+                      <span className="email">
                         <div className="Email">
                           <MdOutlineMailOutline className="mr-3" size={30} />
-                          <h3> Email:</h3>
+                          <h3>Email:</h3>
                         </div>
                       </span>
-                      (contact@buildtruck.com)
+                      (mymom0937@gmail.com)
                     </li>
                     <li>
-                      <span class="bi bi-envelope">
+                      <span className="bi bi-envelope">
                         <div className="phone">
                           <CiPhone className="mr-3" size={35} />
-                          <h3>phone:</h3>
+                          <h3>Phone:</h3>
                         </div>
                       </span>
-                      1800 456 7890/1254 89703654
+                      +251 937 59 79 17
                     </li>
                   </ul>
                 </div>
@@ -89,7 +91,7 @@ function Contact() {
             <div className="right-column">
               <div className="phone">1800.456.7890</div>
               <div className="btn">
-                <a href="#" className="theme-btn btn-style-one">
+                <a href="/contact" className="theme-btn btn-style-one">
                   <span>Contact us</span>
                   <i className="flaticon-right"></i>
                 </a>
@@ -103,3 +105,4 @@ function Contact() {
 }
 
 export default Contact;
+

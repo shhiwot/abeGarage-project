@@ -1,59 +1,36 @@
-/* .main-banner {
+.main-banner {
     background-size: cover;
     background-position: center;
     color: white;
     padding: 100px 20px;
     text-align: center;
     position: relative;
-  }
-  
-   .banner-content {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  
-  .breadcrumb {
-    margin-top: 20px;
-    font-size: 14px;
-  } 
+}
 
-  
-  .breadcrumb a {
-    color: white;
-    text-decoration: none;
-  }
-  
-  .breadcrumb a:hover {
-    text-decoration: underline;
-  }
-   */
-   .main-banner {
-    background-size: cover;
-    background-position: center;
-    color: white;
-    padding: 100px 20px;
-    text-align: center;
-    position: relative;
-  }
-  
-  .banner-content {
+.banner-content {
     max-width: 1200px;
     margin: 0 auto;
     text-align: left; /* Align text to the left */
-    padding-left: 20px; /* Adjust this value to control the distance from the left */
-  }
-  
-  .breadcrumb {
+    padding-left: 20px; /* Add left padding */
+}
+
+.breadcrumb {
     margin-top: 20px;
     font-size: 14px;
-  }
-  
-  .breadcrumb a {
+}
+
+/* Add space specifically between Home link and arrow */
+.breadcrumb a {
     color: white;
     text-decoration: none;
-  }
-  
-  .breadcrumb a:hover {
+    margin-right: 8px; /* Space between Home and the arrow */
+}
+
+.breadcrumb span {
+    margin-left: 8px; /* Space between the arrow and About Us */
+}
+
+/* Ensure proper color for About Us */
+.breadcrumb a:hover {
     text-decoration: underline;
-  }
-  
+}

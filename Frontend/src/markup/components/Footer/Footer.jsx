@@ -14,9 +14,7 @@ function Footer(props) {
                   <div className="icon">
                     <span className="flaticon-pin"></span>
                   </div>
-                  <div className="text">
-                    54B, Tailstoi Town 5238 MT, <br /> La city, IA 522364
-                  </div>
+                  <div className="text">Addis Ababa, Ethiopia</div>
                 </div>
               </div>
             </div>
@@ -28,9 +26,8 @@ function Footer(props) {
                   </div>
                   <div className="text">
                     Email us : <br />{" "}
-                    <a href="mailto:contact.contact@autorex.com">
-                      contact@autorex.com
-                    </a>
+                    {/* <a href="mailto:contact.contact@autorex.com"> */}
+                    <a href="/contact">mymom0937@gmail.com</a>
                   </div>
                 </div>
               </div>
@@ -43,7 +40,7 @@ function Footer(props) {
                   </div>
                   <div className="text">
                     Call us on : <br />
-                    <strong>+ 1800 456 7890</strong>
+                    <strong>+251 937 59 79 17</strong>
                   </div>
                 </div>
               </div>
@@ -58,9 +55,10 @@ function Footer(props) {
               <div className="footer-column col-lg-4">
                 <div className="widget widget_about">
                   <div className="text">
-                    Capitalize on low hanging fruit to identify a ballpark value
-                    added activity to beta test. Override the digital divide
-                    additional clickthroughs.
+                    Streamline your operations by leveraging the latest
+                    technology to identify key areas for improvement. Optimize
+                    your workflow to increase efficiency and customer
+                    satisfaction with our advanced garage app management system.
                   </div>
                 </div>
               </div>
@@ -72,10 +70,10 @@ function Footer(props) {
                       <div className="widget-content">
                         <ul className="list">
                           <li>
-                            <a href="index.html">Home</a>
+                            <a href="/home">Home</a>
                           </li>
                           <li>
-                            <a href="about.html">About Us</a>
+                            <a href="/about">About Us</a>
                           </li>
                           <li>
                             <a href="#">Appointment</a>
@@ -84,9 +82,8 @@ function Footer(props) {
                             <a href="testimonial.html">Testimonials</a>
                           </li>
                           <li>
-                            <a href="contact.html">Contact Us</a>
+                            <a href="/contact">Contact Us</a>
                           </li>
-                  
                         </ul>
                       </div>
                     </div>
@@ -129,13 +126,13 @@ function Footer(props) {
                       </a>
                     </li>
                     <li>
-                      <a href="#">
+                      <a href="/https://www.linkedin.com/in/seid-endris-dev/">
                         <span className="fab fa-linkedin-in"></span>
                       </a>
                     </li>
                     <li>
-                      <a href="#">
-                        <span className="fab fa-twitter"></span>
+                      <a href="https://github.com/mymom0937/">
+                        <span className="fab fa-github"></span>
                       </a>
                     </li>
                     <li>
